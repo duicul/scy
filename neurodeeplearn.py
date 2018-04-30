@@ -85,7 +85,7 @@ class Pointalt:
         self.y=random.randint(0,aheight)
         self.var=1 if self.x>self.y else 0
 
-nn=NNetwork(2,[5,3],1,0.5)
+nn=NNetwork(2,[3,3],1,0.5)
 nn1=NNetwork(2,[3],1,0.8)
 inputs=[[0,0],[1,0],[0,1],[1,1]]
 outputs=[[0],[1],[1],[0]]
@@ -114,7 +114,7 @@ canvas2.pack(fill="both", expand=True)
 canvas3 = Canvas(frame3, width=awidth, height=aheight)
 canvas3.pack(fill="both", expand=True)
 canvas3.create_line(0,0,awidth,aheight)
-ptab2=[Pointalt() for i in range (5000)]
+ptab2=[Pointalt() for i in range (10000)]
 ptab3=[Pointalt() for i in range (500)]
 rate=0
 for paux in ptab3:
