@@ -1,0 +1,7 @@
+git log --format=%B
+
+find . -exec git log {} \; > log.txt
+
+find . -exec  sh -c "git log {} | wc | sed 's/.*/\0data\n/' " \; > log.txt
+
+/c/Users/duicul/AppData/Roaming/npm/node_modules/gitinspector/gitinspector.py
