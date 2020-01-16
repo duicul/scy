@@ -19,7 +19,8 @@ if __name__ == '__main__':
     print(str(port.description)+" "+str(port.device)+" "+str(port.hwid)+" "+str(port.interface)+" "+str(port.name))
     ser = serial.Serial('COM5', 9600)
     while(True):
-        val=ser.readline()[::-1]
+        val=ser.read(2)
+        val=int.from_bytes(val, "big")
         print(val)
         vin=int(val)*5/1024
         print(vin)

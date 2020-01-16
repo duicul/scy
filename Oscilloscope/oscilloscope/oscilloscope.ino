@@ -133,8 +133,11 @@ void loop() {
   uint16_t i=0;
   if(!read_on){
     for(i=0;i<read_index;i++){
-      sendint(readings[i]);
-      UART_TxChar('\n');}
+      //sendint(readings[i]);
+      UART_TxChar(readings[i]>>8);
+      UART_TxChar(readings[i]);
+      //UART_TxChar('\n');
+      }
     read_index=0;
     read_on=true;}
     delay(10000);

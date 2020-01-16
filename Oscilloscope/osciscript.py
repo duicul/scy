@@ -27,17 +27,19 @@ class Window(QWidget):
         button1 = QPushButton("Refresh")
         #button1.setText("Refresh")
         #button1.move(64,32)
-        button1.clicked.connect(lambda x : print("Return"))
+        button1.clicked.connect(lambda x : print(str(self.combo.currentData())))
         grid.addWidget(button1,1,0)
 
         combolabel=QLabel("Serial port")
         grid.addWidget(combolabel,2,0)
         port_list=list_ports.comports()
-        combo = QComboBox()
+        self.combo = QComboBox()
         for port in port_list:
-            combo.addItem(str(port.device))
-        combo.activated[str].connect(self.refresh)
-        grid.addWidget(combo,2,1)
+            self.combo.addItem(str(port.description),str(port.device))
+        if len(port_list)>0:
+            self.combo.setCurrentIndex(0)
+        self.combo.activated[str].connect(self.refresh)
+        grid.addWidget(self.combo,2,1)
         
         baudlabel=QLabel("Baud Rate")
         grid.addWidget(baudlabel,3,0)
