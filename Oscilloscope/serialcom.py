@@ -16,19 +16,6 @@ class Window(QWidget):
     def __init__(self):
         QWidget.__init__(self)
         grid = QGridLayout()
-
-        button1 = QPushButton("Refresh")
-        #button1.setText("Refresh")
-        #button1.move(64,32)
-        button1.clicked.connect(lambda x : print("Return"))
-        grid.addWidget(button1,1,0)
-
-        port_list=list_ports.comports()
-        combo = QComboBox()
-        for port in port_list:
-            combo.addItem(str(port.device))
-        combo.activated[str].connect(self.refresh)
-        grid.addWidget(combo,1,1)
         
         m = PlotCanvas(width=100, height=100)
         #m.move(1,1)
@@ -36,8 +23,27 @@ class Window(QWidget):
         timer.timeout.connect(m.plot)
         timer.start(1000)
         grid.addWidget(m,0,0,1,2)
+
+        button1 = QPushButton("Refresh")
+        #button1.setText("Refresh")
+        #button1.move(64,32)
+        button1.clicked.connect(lambda x : print("Return"))
+        grid.addWidget(button1,1,0)
+
+        combolabel=QLabel("Serial port")
+        grid.addWidget(combolabel,2,0)
+        port_list=list_ports.comports()
+        combo = QComboBox()
+        for port in port_list:
+            combo.addItem(str(port.device))
+        combo.activated[str].connect(self.refresh)
+        grid.addWidget(combo,2,1)
         
-       
+        baudlabel=QLabel("Baud Rate")
+        grid.addWidget(baudlabel,3,0)
+        baud = QLineEdit()
+        baud.setValidator(QIntValidator())
+        grid.addWidget(baud,3,1)
 
         self.setLayout(grid)
         self.setGeometry(50,50,1200,800)
