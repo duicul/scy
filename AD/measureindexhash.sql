@@ -1,0 +1,13 @@
+SET @stime:= CURTIME(4);
+SELECT * FROM people WHERE NAME='John';
+SET @exectime:= TIMEDIFF(CURTIME(4),@stime);
+SELECT @exectime;
+EXPLAIN SELECT * FROM people WHERE NAME='John';
+RESET QUERY CACHE;
+
+SET @stime1:= CURTIME(4);
+SELECT * FROM people WHERE NAME LIKE '%ohn';
+SET @exectime1:= TIMEDIFF(CURTIME(4),@stime);
+SELECT @exectime1;
+EXPLAIN SELECT * FROM people WHERE NAME LIKE '%ohn';
+RESET QUERY CACHE;

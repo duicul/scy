@@ -1,0 +1,1 @@
+ALTER TABLE  students ADD CONSTRAINT check_grade CHECK (grade>0 AND grade <=10)

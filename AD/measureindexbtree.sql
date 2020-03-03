@@ -1,0 +1,13 @@
+SET @stime1:= CURTIME(4);
+SELECT * FROM grade g WHERE g.GRADE = 5;
+EXPLAIN SELECT * FROM grade g WHERE g.GRADE = 5;
+SET @exectime1:= TIMEDIFF(CURTIME(4),@stime);
+SELECT @exectime1;
+RESET QUERY CACHE;
+
+SET @stime:= CURTIME(4);
+SELECT * FROM grade g WHERE g.GRADE > 3;
+EXPLAIN SELECT * FROM grade g WHERE g.GRADE > 3;
+SET @exectime:= TIMEDIFF(CURTIME(4),@stime);
+SELECT @exectime;
+RESET QUERY CACHE;
