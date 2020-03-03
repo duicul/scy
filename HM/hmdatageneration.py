@@ -32,14 +32,17 @@ def backtrack(data,mindev,subset):
     return auxsubset
 init=time.time_ns()
 sol=backtrack(data["IA8"],None,[])
+time8=time.time_ns()-init
 print(sol)            
 print(abs(sum(sol)))
-time8=time.time_ns()-init
 init=time.time_ns()
 sol=backtrack(data["IA10"],None,[])
+time10=time.time_ns()-init
 print(sol)            
 print(abs(sum(sol))) 
-time10=time.time_ns()-init
 print("time8 = "+str(time8))
 print("time10 = "+str(time10))
 print("divide = "+str(time10/time8))
+card(op(8))=A(8,1)*...*A(8,8)=(8!*8!*8!*8!*8!*8!*8!*8!)/(7!*6!*5!*4!*3!*2!*1!*0!)
+card(op(10))=A(10,1)*...*A(10,10)=(10!*10!*10!*10!*10!*10!*10!*10!*10!*10!)/(9!*8!*7!*6!*5!*4!*3!*2!*1!*0!)
+card(op(10))/card(op(8))=(9^8*10^8*10!*10!)/(9!*8!)=9^8*10^8*10*9*10=10^10*9^9
