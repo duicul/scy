@@ -88,7 +88,36 @@ def measure_select(index):
             #print(result)
     except Exception:
         pass
+    #print(myresult)
     mycursor.close()
+    return myresult
+
+def measure_select_hash(index):
+    index_opt="" if index == False else " IGNORE INDEX (GRADE) "
+    mycursor = mydb.cursor()
+    querry="START TRANSACTION;"
+    querry+="RESET QUERY CACHE;"
+    querry+="SET @stime:= CURTIME(4);"
+    querry+="SELECT * FROM people p,students s,grade g "+index_opt+" , course c  where p.id=s.pid and s.sid=g.sid and s.sid=c.sid and c.course = 'Drama';"
+    querry+="SET @exectime:= TIMEDIFF(CURTIME(4),@stime);"
+    querry+="SELECT @exectime;"
+    querry+="COMMIT;"
+    myresult=""
+    #print(querry)
+    data=mycursor.execute(querry, multi=True)
+    #print(data)
+    try:
+        result=next(data)
+        while result:
+            #print(result)
+            if result.with_rows:
+                myresult=result.fetchall()
+            result=next(data)
+            #print(result)
+    except Exception:
+        pass
+    mycursor.close()
+    #print(myresult)
     return myresult
     
 
@@ -111,8 +140,8 @@ def insert_data(size):
         insert_student(name,surname,random.randint(18,25),degree[deg],subject[deg][subj],random.randint(2,10))
 
 #insert_student("Popa1","Vasi",16,"Math","Meth",3)
-sizes=[10,40,50,200,200,500,1000]
-file=open("result.txt","w")
+sizes=[10,40,50,200,200,500,1000,2000]
+file=open("result_max.txt","w")
 slist=[]
 reg_no=0
 for size in sizes:
