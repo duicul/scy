@@ -59,8 +59,8 @@ ALTER TABLE `students`
   ADD CONSTRAINT `PID` FOREIGN KEY (`PID`) REFERENCES `people` (`ID`) ON DELETE NO ACTION;
   
 
--- There are 2 types of indexes: binary tree for comparasion and prefix matching and hash for equality / perfect match -->
--- I used a python script to insert data into the database and measure the time taken for a select querry for both types of indexes -->
+-- There are 2 types of indexes: binary tree for comparasion and prefix matching and hash for equality / perfect match
+-- I used a python script to insert data into the database and measure the time taken for a select querry for both types of indexes
 
 --Select querry for hash :
 -- To not use an index IGNORE INDEX (GRADE) could be added
@@ -106,6 +106,12 @@ COMMIT;
 {'noindex': '00:00:00.0880', 'index': '00:00:00.0010', 'records': 1000}, 
 {'noindex': '00:00:00.0748', 'index': '00:00:00.0014', 'records': 2000}, 
 {'noindex': '00:00:00.5755', 'index': '00:00:00.0126', 'records': 4000}]*/
+
+--Querries used to clean the database after each insertion round and select measurement :
+DELETE FROM grade;
+DELETE FROM course;
+DELETE FROM students;
+DELETE FROM people;
 
 --Querries with the same result :
 EXPLAIN SELECT * FROM people p,course c, grade g,students s WHERE g.SID=s.SID  AND s.SID=c.SID AND p.ID=s.PID ;
