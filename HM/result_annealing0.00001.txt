@@ -1,0 +1,12 @@
+[{'inittemp': 5000, 'templen': 4900, 'coolfact': 0.99, 'size': 8, 'time': 1013583600, 'val': 9, 'length': 3, 'list': [-41, 66, -16]},
+ {'inittemp': 3500, 'templen': 3400, 'coolfact': 0.97, 'size': 8, 'time': 1180329800, 'val': 56, 'length': 1, 'list': [56]}, 
+ {'inittemp': 3000, 'templen': 2900, 'coolfact': 0.995, 'size': 8, 'time': 1016708900, 'val': 8, 'length': 2, 'list': [66, -58]},
+ {'inittemp': 5000, 'templen': 4900, 'coolfact': 0.99, 'size': 10, 'time': 1324245000, 'val': -67, 'length': 1, 'list': [-67]},
+ {'inittemp': 3500, 'templen': 3400, 'coolfact': 0.97, 'size': 10, 'time': 1557148500, 'val': -48, 'length': 2, 'list': [44, -92]}, 
+ {'inittemp': 3000, 'templen': 2900, 'coolfact': 0.995, 'size': 10, 'time': 1344586300, 'val': -77, 'length': 3, 'list': [-67, 82, -92]},
+ {'inittemp': 5000, 'templen': 4900, 'coolfact': 0.99, 'size': 50, 'time': 23202614600, 'val': 105, 'length': 5, 'list': [14, -34, 88, 13, 24]},
+ {'inittemp': 3500, 'templen': 3400, 'coolfact': 0.97, 'size': 50, 'time': 25415697600, 'val': 49, 'length': 4, 'list': [-24, 2, 47, 24]},
+ {'inittemp': 3000, 'templen': 2900, 'coolfact': 0.995, 'size': 50, 'time': 22260688900, 'val': 71, 'length': 4, 'list': [-1, 50, 55, -33]}, 
+ {'inittemp': 5000, 'templen': 4900, 'coolfact': 0.99, 'size': 100, 'time': 105599702600, 'val': 321, 'length': 7, 'list': [36, 96, 67, 3, 63, 25, 31]},
+ {'inittemp': 3500, 'templen': 3400, 'coolfact': 0.97, 'size': 100, 'time': 102752266300, 'val': 5, 'length': 5, 'list': [-87, 21, 34, -28, 65]},
+ {'inittemp': 3000, 'templen': 2900, 'coolfact': 0.995, 'size': 100, 'time': 98780929400, 'val': 76, 'length': 6, 'list': [0, 77, -68, 83, 21, -37]}]
