@@ -54,6 +54,7 @@ def measure_insert(mycursor,indrange):
     degree=["Math","Algebra","Analysis","Comedy","Drama","Classics","Biology","Anatomy","Chemistry"]
     vals=[]
     for i in indrange:
+        #print(i)
         name=randomString(random.randint(6,12))
         surname=randomString(random.randint(6,12))
         age=random.randint(10,90)
@@ -61,20 +62,25 @@ def measure_insert(mycursor,indrange):
     #print(vals)
     sql = """INSERT INTO people (id,name,surname,age) VALUES (?,?,?,?)"""
     
-    cursor.executemany(sql,vals)
-    
+    result=cursor.executemany(sql,vals)
+    succes=len(list(filter(lambda x :x['rowcount']==1,result)))
+    #print(result)
     vals=[]
     for i in indrange:
+        #print(i)
         deg=degree[random.randint(0,len(degree)-1)]
         vals.append((i,i,deg))
     #print(vals)
     sql = """INSERT INTO student (sid,pid,degree) VALUES (?,?,?)"""
-    cursor.executemany(sql,vals)
+    result=cursor.executemany(sql,vals)
+    #print(result)
     mycursor.execute(querry)
     final=mycursor.fetchone()
     #print(final)
     timeresp = time.time_ns()-initresp
-    return {"exec":final[0]-init[0],"resp":timeresp/1000000}
+    succes+=len(list(filter(lambda x :x['rowcount']==1,result)))
+    succes/=2
+    return {"exec":final[0]-init[0],"resp":timeresp/1000000,"succes":succes,"total":len(indrange)}
     
     
 def test_select(mycursor,threads_no):
@@ -99,8 +105,10 @@ def test_insert(mycursor,datasize,threads_no):
     threads=[]
     with concurrent.futures.ThreadPoolExecutor() as executor:
         for i in range(threads_no):
-            rangelimit=range(i*threads_no,(i+1)*threads_no) if (i+1)*threads_no<datasize else range(i*threads_no,datasize)
-            future = executor.submit(measure_insert,mycursor,rangelimit)
+            start=int(i*(datasize/threads_no))
+            end=int((i+1)*(datasize/threads_no)) if int((i+1)*(datasize/threads_no))<datasize else datasize
+            print("start"+str(start)+" end "+str(end)+"|")
+            future = executor.submit(measure_insert,mycursor,range(start,end))
             threads.append(future)
         for thread in threads:
             while not thread.done():
@@ -110,6 +118,7 @@ def test_insert(mycursor,datasize,threads_no):
     for val in timevals:
         print("insert execution time "+str(val["exec"]))
         print("insert response time "+str(val["resp"]))
+        print("succesful "+str(val["succes"])+" from total: "+str(val["total"]))
 
 def test(cursor,datasize,threads_no):
     create_table(cursor)
@@ -119,4 +128,4 @@ def test(cursor,datasize,threads_no):
 connection = client.connect("http://localhost:4200/", username="crate",error_trace=True)
 #create_table(connection)
 cursor = connection.cursor()
-test(cursor,2000,2)
+test(cursor,10000,1)
