@@ -1,5 +1,5 @@
 from crate import client
-import time,random,string
+import time,random,string,json
 import concurrent.futures
 
 def randomString(stringLength):
@@ -9,7 +9,9 @@ def randomString(stringLength):
 
 def create_table(cursor):
     cursor.execute("DROP Table people;")
+    print("DROP Table people;")
     cursor.execute("DROP Table student;")
+    print("DROP Table student;")
     sql="CREATE TABLE people("
     sql+="ID int NOT NULL primary key ,"
     sql+="NAME text NOT NULL,"
@@ -41,9 +43,11 @@ def measure_select(mycursor):
     querry="SELECT current_timestamp;"
     mycursor.execute(querry)
     final=mycursor.fetchone()
+    timeexec=final[0]-init[0] if (not final == None) and (not init == None) else 0
     #print(final)
     timeresp = time.time_ns()-initresp
-    return {"exec":final[0]-init[0],"resp":timeresp/1000000}
+    timeexec=0 if timeexec<0 else timeexec
+    return {"exec":timeexec,"resp":timeresp/1000000}
 
 def measure_insert(mycursor,indrange):
     initresp = time.time_ns()
@@ -80,7 +84,9 @@ def measure_insert(mycursor,indrange):
     timeresp = time.time_ns()-initresp
     succes+=len(list(filter(lambda x :x['rowcount']==1,result)))
     succes/=2
-    return {"exec":final[0]-init[0],"resp":timeresp/1000000,"succes":succes,"total":len(indrange)}
+    timeexec=final[0]-init[0] if (not final == None) and (not init == None) else 0
+    timeexec=0 if timeexec<0 else timeexec
+    return {"exec":timeexec,"resp":timeresp/1000000,"succes":succes,"total":len(indrange)}
     
     
 def test_select(mycursor,threads_no):
@@ -96,9 +102,16 @@ def test_select(mycursor,threads_no):
                 pass
             return_value = thread.result()
             timevals.append(return_value)
+    resp_time=0
+    exec_time=0
     for val in timevals:
-        print("select execution time "+str(val["exec"]))
-        print("select response time "+str(val["resp"]))
+        resp_time+=val["resp"]
+        exec_time+=val["exec"]
+    resp_time/=len(timevals)
+    exec_time/=len(timevals)
+    print("select execution time "+str(exec_time))
+    print("select response time "+str(resp_time))
+    return {"exec":exec_time,"resp":resp_time}
 
 def test_insert(mycursor,datasize,threads_no):
     timevals=[]
@@ -115,17 +128,40 @@ def test_insert(mycursor,datasize,threads_no):
                 pass
             return_value = thread.result()
             timevals.append(return_value)
+    resp_time=0
+    exec_time=0
+    succes=0
     for val in timevals:
-        print("insert execution time "+str(val["exec"]))
-        print("insert response time "+str(val["resp"]))
-        print("succesful "+str(val["succes"])+" from total: "+str(val["total"]))
+        resp_time+=val["resp"]
+        exec_time+=val["exec"]
+        succes+=(val["succes"]/val["total"])
+    succes*=100
+    resp_time/=len(timevals)
+    exec_time/=len(timevals)
+    succes/=len(timevals)
+    print("select execution time "+str(exec_time))
+    print("select response time "+str(resp_time))
+    print("succes rate  "+str(succes)+"% ")
+    return {"exec":exec_time,"resp":resp_time,"succes":succes}
 
 def test(cursor,datasize,threads_no):
+    print("test "+str(datasize)+" threadsno "+str(threads_no))
     create_table(cursor)
-    test_insert(cursor,datasize,threads_no)
-    test_select(cursor,threads_no)
+    insert=test_insert(cursor,datasize,threads_no)
+    select=test_select(cursor,threads_no)
+    return {"datasize":datasize,"threads":threads_no,"data/thread":datasize/threads_no,"insert":insert,"select":select}
 
 connection = client.connect("http://localhost:4200/", username="crate",error_trace=True)
 #create_table(connection)
 cursor = connection.cursor()
-test(cursor,10000,1)
+threads_no=[1,5,10,20,50,100]
+datasize=[10,20,30,50,100,200,300,500,1000,2000,3000,4000,5000,10000]
+tests=[]
+for ds in datasize :
+    for th in threads_no:
+        if ds>=th:
+            tests.append(test(cursor,ds,th))
+file = open("result_cratedb.txt", "w")
+json.dump(tests,file)
+#file.write(str(tests))
+file.close()
