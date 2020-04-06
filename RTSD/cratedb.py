@@ -136,8 +136,8 @@ def test_insert(mycursor,datasize,threads_no):
         exec_time+=val["exec"]
         succes+=(val["succes"]/val["total"])
     succes*=100
-    resp_time/=len(timevals)
-    exec_time/=len(timevals)
+    #resp_time/=len(timevals)
+    #exec_time/=len(timevals)
     succes/=len(timevals)
     print("select execution time "+str(exec_time))
     print("select response time "+str(resp_time))
@@ -157,10 +157,11 @@ cursor = connection.cursor()
 threads_no=[1,5,10,20,50,100]
 datasize=[10,20,30,50,100,200,300,500,1000,2000,3000,4000,5000,10000]
 tests=[]
-for ds in datasize :
-    for th in threads_no:
+for th in threads_no:
+    for ds in datasize :
         if ds>=th:
             tests.append(test(cursor,ds,th))
+cursor.close()
 file = open("result_cratedb.txt", "w")
 json.dump(tests,file)
 #file.write(str(tests))

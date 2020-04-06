@@ -38,6 +38,7 @@ def plot_cratedb(threads_no,datasize):
         #plt.plot(x,y_sel_exec,label="select execution time")
         plt.plot(x,y_ins_resp,label="insert response time")
         #plt.plot(x,y_ins_exec,label="insert execution time")
+        plt.title(str(th)+" Threads total time for datasize\n(datasize split equally per threads)")
         plt.legend()
         plt.savefig("cratedb"+str(th)+".png")
         plt.close()
