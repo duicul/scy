@@ -2,16 +2,8 @@ import mysql.connector
 import time,random,string,json
 import concurrent.futures
 import traceback
-import MySQLdb
-
-
-mydb = MySQLdb.connect(
-  host="localhost",
-  user="root",
-  passwd="",
-  database="advanced_databases"
-)
-
+import  sqlite3
+from  sqlite3 import OperationalError
 
 def randomString(stringLength):
     """Generate a random string of letters and digits """
@@ -19,111 +11,61 @@ def randomString(stringLength):
 
 
 def create_table():
-    conn=MySQLdb.connect(
-      host="localhost",
-      user="root",
-      passwd="",
-      database="advanced_databases"
-    )
+    conn = sqlite3.connect('measure.db')
     cursor=conn.cursor()
     try:
-        cursor.execute("DROP Table people1;")
+        cursor.execute("DROP Table people;")
         mydb.commit()
     except Exception:
         pass
     print("DROP Table people1;")
     try:
-        cursor.execute("DROP Table student1;")
+        cursor.execute("DROP Table student;")
         mydb.commit()
     except Exception:
         pass
-    print("DROP Table student1;")
-    sql="CREATE TABLE people1("
-    sql+="ID int NOT NULL primary key AUTO_INCREMENT ,"
+    print("DROP Table student;")
+    sql="CREATE TABLE people("
+    sql+="ID int NOT NULL primary key  ,"
     sql+="NAME text NOT NULL,"
     sql+="SURNAME text NOT NULL,"
     sql+="AGE int NOT NULL);"
     print(sql)
     cursor.execute(sql)
-    mydb.commit()
-    sql="CREATE TABLE student1 ("
+    sql="CREATE TABLE student ("
     sql+=" SID int NOT NULL primary key,"
     sql+=" PID int NOT NULL ,"
     sql+="DEGREE text NOT NULL );"
     print(sql)
     cursor.execute(sql)
-    mydb.commit()
+    conn.commit()
     cursor.close()
+    conn.close()
 
 def measure_select():
-    conn=MySQLdb.connect(
-      host="localhost",
-      user="root",
-      passwd="",
-      database="advanced_databases"
-    )
+    conn = sqlite3.connect('measure.db')
     #print("measure_select")
     initresp = time.time_ns()
     mycursor = conn.cursor()
-    querry="START TRANSACTION;"
+    querry="BEGIN TRANSACTION;"
     mycursor.execute(querry)
     mycursor.fetchall()
-    querry="RESET QUERY CACHE;"
+    querry="SELECT * FROM people p inner join student s on p.id=s.pid;"
     mycursor.execute(querry)
     mycursor.fetchall()
-    querry="SET @stime:= CURTIME(4)+0;"
+    querry="END TRANSACTION;"
     mycursor.execute(querry)
     mycursor.fetchall()
-    querry="SELECT * FROM people1 p inner join student1 s on p.id=s.pid;"
-    mycursor.execute(querry)
-    mycursor.fetchall()
-    querry="SET @exectime:= (CURTIME(4)+0)-@stime;"
-    mycursor.execute(querry)
-    mycursor.fetchall()
-    querry="SELECT @exectime;"
-    mycursor.execute(querry)
-    #print()
-    #querry+="COMMIT;"
-    myresult=""
-    #data=mycursor.execute(querry)
     conn.commit()
-    myresult=mycursor.fetchall()
-    """try:
-        result=next(data)
-        while result:
-            #print(result)
-            if result.with_rows:
-                myresult=result.fetchall()
-            result=next(data)
-            #print(result)
-    except Exception as e:
-        print(traceback.format_exc())"""
     timeresp = time.time_ns()-initresp
-    #print(myresult[0][0])
-    #print(timeresp/1000000)
-    #print(myresult)
-    timeexec=myresult[0][0]
+    timeexec=0
     mycursor.close()
+    conn.close()
     return {"exec":float(timeexec*1000),"resp":timeresp/1000000}  
 
 def measure_insert(indrange):
-    conn=MySQLdb.connect(
-      host="localhost",
-      user="root",
-      passwd="",
-      database="advanced_databases"
-    )
+    conn = sqlite3.connect('measure.db')
     mycursor=conn.cursor()
-    querry="START TRANSACTION;"
-    mycursor.execute(querry)
-    mycursor.fetchall()
-    querry="RESET QUERY CACHE;"
-    mycursor.execute(querry)
-    mycursor.fetchall()
-    querry="SET @stime:= CURTIME(4)+0;"
-    mycursor.execute(querry)
-    mycursor.fetchall()
-    #print(init)
     degree=["Math","Algebra","Analysis","Comedy","Drama","Classics","Biology","Anatomy","Chemistry"]
     vals=[]
     for i in indrange:
@@ -133,10 +75,12 @@ def measure_insert(indrange):
         age=random.randint(10,90)
         vals.append((i+1,name,surname,age))
     #print(vals)
-    sql = """INSERT INTO people1 (id,name,surname,age) VALUES (%s,%s,%s,%s)"""
+    querry="BEGIN TRANSACTION;"
+    mycursor.execute(querry)
+    mycursor.fetchall()    
+    sql = """INSERT INTO people (id,name,surname,age) VALUES (?,?,?,?)"""
     initresp = time.time_ns()
     result=mycursor.executemany(sql,vals)
-    #succes=len(list(filter(lambda x :x['rowcount']==1,result)))
     #print(sql)
     vals=[]
     for i in indrange:
@@ -144,23 +88,16 @@ def measure_insert(indrange):
         deg=degree[random.randint(0,len(degree)-1)]
         vals.append((i+1,i+1,deg))
     #print(vals)
-    sql = """INSERT INTO student1 (sid,pid,degree) VALUES (%s,%s,%s)"""
+    sql = """INSERT INTO student (sid,pid,degree) VALUES (?,?,?)"""
     result=mycursor.executemany(sql,vals)
-    timeresp = time.time_ns()-initresp
-    #print(sql)
-    querry="SET @exectime:= (CURTIME(4)+0)-@stime;"
+    querry="END TRANSACTION;"
     mycursor.execute(querry)
     mycursor.fetchall()
-    querry="SELECT @exectime;"
-    mycursor.execute(querry)
-    myresult=mycursor.fetchall()
+    timeresp = time.time_ns()-initresp
+    #print(sql)
     conn.commit()
-    
-    #succes+=len(list(filter(lambda x :x['rowcount']==1,result)))
-    #succes/=2
-    timeexec=myresult[0][0]
-    #print(timeexec)
-    #print(timeresp)
+
+    timeexec=0
     mycursor.close()
     conn.close()
     #,"succes":succes
@@ -228,21 +165,25 @@ def test(datasize,threads_no):
     select=test_select(threads_no)
     return {"datasize":datasize,"threads":threads_no,"data/thread":datasize/threads_no,"select":select,"insert":insert}
 
-threads_no=[1,2,5,10,20,50,100]
-datasize=[10,20,30,50,100,200,300,500,1000,2000,3000,4000,5000,10000]
-tests=[]
-for th in threads_no:
-    for ds in datasize :
-        if ds>=th:
-            retry=0
-            succ=False
-            while retry<30 and not succ:
-                try:
-                    result=test(ds,th)
-                    tests.append(result)
-                    succ=True
-                except Exception:
-                    retry+=1
-file = open("result_mariadb.txt", "w")
-json.dump(tests,file)
-file.close()
+if __name__ == "__main__":
+    threads_no=[1]#,2,5,10,20,50,100]
+    datasize=[10,20,30,50,100,200,300,500,1000,2000,3000,4000,5000,10000]
+    tests=[]
+    for th in threads_no:
+        for ds in datasize :
+            if ds>=th:
+                retry=0
+                succ=False
+                while retry<5 and not succ:
+                    try:
+                        result=test(ds,th)
+                        tests.append(result)
+                        succ=True
+                    except sqlite3.OperationalError :
+                         retry+=1
+                         print(traceback.format_exc())
+                         time.sleep(random.randint(10, 30))
+    file = open("result_sqlite.txt", "w")
+    json.dump(tests,file)
+    file.close()
+    #create_table()

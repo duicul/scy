@@ -1,0 +1,1172 @@
+[
+	{
+		"datasize": 10,
+		"threads": 1,
+		"data/thread": 10.0,
+		"select": {
+			"exec": 54.8,
+			"resp": 180.3448
+		},
+		"insert": {
+			"exec": 90.0,
+			"resp": 74.8723
+		}
+	},
+	{
+		"datasize": 20,
+		"threads": 1,
+		"data/thread": 20.0,
+		"select": {
+			"exec": 70.7,
+			"resp": 185.29
+		},
+		"insert": {
+			"exec": 120.2,
+			"resp": 95.1063
+		}
+	},
+	{
+		"datasize": 30,
+		"threads": 1,
+		"data/thread": 30.0,
+		"select": {
+			"exec": 59.9,
+			"resp": 159.887
+		},
+		"insert": {
+			"exec": 94.9,
+			"resp": 79.8953
+		}
+	},
+	{
+		"datasize": 50,
+		"threads": 1,
+		"data/thread": 50.0,
+		"select": {
+			"exec": 55.5,
+			"resp": 189.3362
+		},
+		"insert": {
+			"exec": 180.2,
+			"resp": 159.9789
+		}
+	},
+	{
+		"datasize": 100,
+		"threads": 1,
+		"data/thread": 100.0,
+		"select": {
+			"exec": 60.4,
+			"resp": 180.0969
+		},
+		"insert": {
+			"exec": 240.0,
+			"resp": 224.8526
+		}
+	},
+	{
+		"datasize": 200,
+		"threads": 1,
+		"data/thread": 200.0,
+		"select": {
+			"exec": 65.9,
+			"resp": 179.9843
+		},
+		"insert": {
+			"exec": 100.1,
+			"resp": 77.9921
+		}
+	},
+	{
+		"datasize": 300,
+		"threads": 1,
+		"data/thread": 300.0,
+		"select": {
+			"exec": 61.3,
+			"resp": 179.201
+		},
+		"insert": {
+			"exec": 1495.0,
+			"resp": 1470.1034
+		}
+	},
+	{
+		"datasize": 500,
+		"threads": 1,
+		"data/thread": 500.0,
+		"select": {
+			"exec": 61.4,
+			"resp": 156.751
+		},
+		"insert": {
+			"exec": 139.6,
+			"resp": 114.7955
+		}
+	},
+	{
+		"datasize": 1000,
+		"threads": 1,
+		"data/thread": 1000.0,
+		"select": {
+			"exec": 62.4,
+			"resp": 180.2235
+		},
+		"insert": {
+			"exec": 399.9,
+			"resp": 340.1236
+		}
+	},
+	{
+		"datasize": 2000,
+		"threads": 1,
+		"data/thread": 2000.0,
+		"select": {
+			"exec": 64.2,
+			"resp": 179.5959
+		},
+		"insert": {
+			"exec": 470.2,
+			"resp": 400.1849
+		}
+	},
+	{
+		"datasize": 3000,
+		"threads": 1,
+		"data/thread": 3000.0,
+		"select": {
+			"exec": 61.9,
+			"resp": 170.3542
+		},
+		"insert": {
+			"exec": 669.7,
+			"resp": 524.966
+		}
+	},
+	{
+		"datasize": 4000,
+		"threads": 1,
+		"data/thread": 4000.0,
+		"select": {
+			"exec": 69.3,
+			"resp": 175.1791
+		},
+		"insert": {
+			"exec": 2007.9,
+			"resp": 1833.2099
+		}
+	},
+	{
+		"datasize": 5000,
+		"threads": 1,
+		"data/thread": 5000.0,
+		"select": {
+			"exec": 100.0,
+			"resp": 214.8848
+		},
+		"insert": {
+			"exec": 1130.0,
+			"resp": 904.9522
+		}
+	},
+	{
+		"datasize": 10000,
+		"threads": 1,
+		"data/thread": 10000.0,
+		"select": {
+			"exec": 105.6,
+			"resp": 219.6962
+		},
+		"insert": {
+			"exec": 3237.3,
+			"resp": 2815.1555
+		}
+	},
+	{
+		"datasize": 10,
+		"threads": 2,
+		"data/thread": 5.0,
+		"select": {
+			"exec": 115.6,
+			"resp": 212.9467
+		},
+		"insert": {
+			"exec": 257.70000000000007,
+			"resp": 240.2088
+		}
+	},
+	{
+		"datasize": 20,
+		"threads": 2,
+		"data/thread": 10.0,
+		"select": {
+			"exec": 200.3,
+			"resp": 599.5962
+		},
+		"insert": {
+			"exec": 282.6,
+			"resp": 265.3512
+		}
+	},
+	{
+		"datasize": 30,
+		"threads": 2,
+		"data/thread": 15.0,
+		"select": {
+			"exec": 155.3,
+			"resp": 369.8963
+		},
+		"insert": {
+			"exec": 525.5,
+			"resp": 510.1862
+		}
+	},
+	{
+		"datasize": 50,
+		"threads": 2,
+		"data/thread": 25.0,
+		"select": {
+			"exec": 80.0,
+			"resp": 369.1557
+		},
+		"insert": {
+			"exec": 210.0,
+			"resp": 189.8964
+		}
+	},
+	{
+		"datasize": 100,
+		"threads": 2,
+		"data/thread": 50.0,
+		"select": {
+			"exec": 58.9,
+			"resp": 279.19230000000007
+		},
+		"insert": {
+			"exec": 234.1,
+			"resp": 205.0341
+		}
+	},
+	{
+		"datasize": 200,
+		"threads": 2,
+		"data/thread": 100.0,
+		"select": {
+			"exec": 64.2,
+			"resp": 280.5138
+		},
+		"insert": {
+			"exec": 291.3,
+			"resp": 198.7803
+		}
+	},
+	{
+		"datasize": 300,
+		"threads": 2,
+		"data/thread": 150.0,
+		"select": {
+			"exec": 111.60000000000001,
+			"resp": 364.9792
+		},
+		"insert": {
+			"exec": 179.7,
+			"resp": 156.6209
+		}
+	},
+	{
+		"datasize": 500,
+		"threads": 2,
+		"data/thread": 250.0,
+		"select": {
+			"exec": 142.7,
+			"resp": 479.6575
+		},
+		"insert": {
+			"exec": 188.1,
+			"resp": 150.4611
+		}
+	},
+	{
+		"datasize": 1000,
+		"threads": 2,
+		"data/thread": 500.0,
+		"select": {
+			"exec": 61.2,
+			"resp": 195.5476
+		},
+		"insert": {
+			"exec": 220.7,
+			"resp": 199.0786
+		}
+	},
+	{
+		"datasize": 2000,
+		"threads": 2,
+		"data/thread": 1000.0,
+		"select": {
+			"exec": 213.89999999999999,
+			"resp": 419.97749999999999
+		},
+		"insert": {
+			"exec": 404.7,
+			"resp": 355.4072
+		}
+	},
+	{
+		"datasize": 3000,
+		"threads": 2,
+		"data/thread": 1500.0,
+		"select": {
+			"exec": 160.7,
+			"resp": 480.1557
+		},
+		"insert": {
+			"exec": 2349.7,
+			"resp": 2072.9377
+		}
+	},
+	{
+		"datasize": 4000,
+		"threads": 2,
+		"data/thread": 2000.0,
+		"select": {
+			"exec": 175.7,
+			"resp": 465.8909
+		},
+		"insert": {
+			"exec": 3995.7999999999999,
+			"resp": 3899.4519
+		}
+	},
+	{
+		"datasize": 5000,
+		"threads": 2,
+		"data/thread": 2500.0,
+		"select": {
+			"exec": 163.5,
+			"resp": 439.6283
+		},
+		"insert": {
+			"exec": 2415.0,
+			"resp": 2268.7164
+		}
+	},
+	{
+		"datasize": 10000,
+		"threads": 2,
+		"data/thread": 5000.0,
+		"select": {
+			"exec": 611.5,
+			"resp": 839.9075
+		},
+		"insert": {
+			"exec": 8147.7,
+			"resp": 7620.350399999999
+		}
+	},
+	{
+		"datasize": 10,
+		"threads": 5,
+		"data/thread": 2.0,
+		"select": {
+			"exec": 651.7,
+			"resp": 1376.2872
+		},
+		"insert": {
+			"exec": 2233.1,
+			"resp": 2143.9395999999999
+		}
+	},
+	{
+		"datasize": 20,
+		"threads": 5,
+		"data/thread": 4.0,
+		"select": {
+			"exec": 336.4,
+			"resp": 740.6821
+		},
+		"insert": {
+			"exec": 1703.0,
+			"resp": 1669.7668
+		}
+	},
+	{
+		"datasize": 30,
+		"threads": 5,
+		"data/thread": 6.0,
+		"select": {
+			"exec": 326.4,
+			"resp": 1195.6512
+		},
+		"insert": {
+			"exec": 3493.7,
+			"resp": 3469.1868
+		}
+	},
+	{
+		"datasize": 50,
+		"threads": 5,
+		"data/thread": 10.0,
+		"select": {
+			"exec": 360.09999999999999,
+			"resp": 980.0214
+		},
+		"insert": {
+			"exec": 410.8,
+			"resp": 393.8598
+		}
+	},
+	{
+		"datasize": 100,
+		"threads": 5,
+		"data/thread": 20.0,
+		"select": {
+			"exec": 300.59999999999999,
+			"resp": 899.5139000000002
+		},
+		"insert": {
+			"exec": 538.8,
+			"resp": 510.5566
+		}
+	},
+	{
+		"datasize": 200,
+		"threads": 5,
+		"data/thread": 40.0,
+		"select": {
+			"exec": 305.5,
+			"resp": 793.2076999999999
+		},
+		"insert": {
+			"exec": 2590.4,
+			"resp": 2534.3463
+		}
+	},
+	{
+		"datasize": 300,
+		"threads": 5,
+		"data/thread": 60.0,
+		"select": {
+			"exec": 95.2,
+			"resp": 243.94010000000004
+		},
+		"insert": {
+			"exec": 937.7,
+			"resp": 887.0167000000001
+		}
+	},
+	{
+		"datasize": 500,
+		"threads": 5,
+		"data/thread": 100.0,
+		"select": {
+			"exec": 361.50000000000008,
+			"resp": 919.1119
+		},
+		"insert": {
+			"exec": 756.4,
+			"resp": 564.9992
+		}
+	},
+	{
+		"datasize": 1000,
+		"threads": 5,
+		"data/thread": 200.0,
+		"select": {
+			"exec": 290.6,
+			"resp": 879.2374
+		},
+		"insert": {
+			"exec": 595.4,
+			"resp": 559.3013000000001
+		}
+	},
+	{
+		"datasize": 2000,
+		"threads": 5,
+		"data/thread": 400.0,
+		"select": {
+			"exec": 398.5999999999999,
+			"resp": 791.2429
+		},
+		"insert": {
+			"exec": 1858.3000000000002,
+			"resp": 1795.9087
+		}
+	},
+	{
+		"datasize": 3000,
+		"threads": 5,
+		"data/thread": 600.0,
+		"select": {
+			"exec": 523.5999999999999,
+			"resp": 1148.6834999999999
+		},
+		"insert": {
+			"exec": 5849.0,
+			"resp": 5791.3666
+		}
+	},
+	{
+		"datasize": 4000,
+		"threads": 5,
+		"data/thread": 800.0,
+		"select": {
+			"exec": 607.2,
+			"resp": 972.492
+		},
+		"insert": {
+			"exec": 2589.4,
+			"resp": 2460.5942999999999
+		}
+	},
+	{
+		"datasize": 5000,
+		"threads": 5,
+		"data/thread": 1000.0,
+		"select": {
+			"exec": 733.4,
+			"resp": 1415.3832
+		},
+		"insert": {
+			"exec": 8224.3,
+			"resp": 8104.2755
+		}
+	},
+	{
+		"datasize": 10000,
+		"threads": 5,
+		"data/thread": 2000.0,
+		"select": {
+			"exec": 1321.1,
+			"resp": 1818.0829999999999
+		},
+		"insert": {
+			"exec": 11802.9,
+			"resp": 11405.3051
+		}
+	},
+	{
+		"datasize": 10,
+		"threads": 10,
+		"data/thread": 1.0,
+		"select": {
+			"exec": 865.9000000000001,
+			"resp": 2035.9757999999998
+		},
+		"insert": {
+			"exec": 1228.8999999999999,
+			"resp": 1150.1797
+		}
+	},
+	{
+		"datasize": 20,
+		"threads": 10,
+		"data/thread": 2.0,
+		"select": {
+			"exec": 378.8,
+			"resp": 859.5068000000001
+		},
+		"insert": {
+			"exec": 8281.0,
+			"resp": 8278.6376
+		}
+	},
+	{
+		"datasize": 30,
+		"threads": 10,
+		"data/thread": 3.0,
+		"select": {
+			"exec": 539.6,
+			"resp": 1853.2306999999999
+		},
+		"insert": {
+			"exec": 2143.5,
+			"resp": 2140.308
+		}
+	},
+	{
+		"datasize": 50,
+		"threads": 10,
+		"data/thread": 5.0,
+		"select": {
+			"exec": 432.6,
+			"resp": 1156.2835
+		},
+		"insert": {
+			"exec": 1918.3,
+			"resp": 1946.4118
+		}
+	},
+	{
+		"datasize": 100,
+		"threads": 10,
+		"data/thread": 10.0,
+		"select": {
+			"exec": 890.0000000000001,
+			"resp": 1956.6366000000003
+		},
+		"insert": {
+			"exec": 1106.2,
+			"resp": 1058.9156
+		}
+	},
+	{
+		"datasize": 200,
+		"threads": 10,
+		"data/thread": 20.0,
+		"select": {
+			"exec": 230.8,
+			"resp": 1197.4906
+		},
+		"insert": {
+			"exec": 911.8,
+			"resp": 897.2175000000001
+		}
+	},
+	{
+		"datasize": 300,
+		"threads": 10,
+		"data/thread": 30.0,
+		"select": {
+			"exec": 1017.1999999999999,
+			"resp": 2005.0328
+		},
+		"insert": {
+			"exec": 4521.4000000000009,
+			"resp": 4492.629400000001
+		}
+	},
+	{
+		"datasize": 500,
+		"threads": 10,
+		"data/thread": 50.0,
+		"select": {
+			"exec": 371.6,
+			"resp": 1477.1117000000002
+		},
+		"insert": {
+			"exec": 1605.1,
+			"resp": 1589.5573
+		}
+	},
+	{
+		"datasize": 1000,
+		"threads": 10,
+		"data/thread": 100.0,
+		"select": {
+			"exec": 384.4,
+			"resp": 1184.9080000000002
+		},
+		"insert": {
+			"exec": 1588.3,
+			"resp": 1535.1417000000002
+		}
+	},
+	{
+		"datasize": 2000,
+		"threads": 10,
+		"data/thread": 200.0,
+		"select": {
+			"exec": 837.8000000000001,
+			"resp": 1620.5508999999998
+		},
+		"insert": {
+			"exec": 3239.3999999999998,
+			"resp": 3201.8605999999997
+		}
+	},
+	{
+		"datasize": 3000,
+		"threads": 10,
+		"data/thread": 300.0,
+		"select": {
+			"exec": 970.5000000000001,
+			"resp": 1372.3998
+		},
+		"insert": {
+			"exec": 3441.1,
+			"resp": 3308.764800000001
+		}
+	},
+	{
+		"datasize": 4000,
+		"threads": 10,
+		"data/thread": 400.0,
+		"select": {
+			"exec": 1713.5999999999997,
+			"resp": 2805.2384
+		},
+		"insert": {
+			"exec": 5771.799999999999,
+			"resp": 5590.206399999999
+		}
+	},
+	{
+		"datasize": 5000,
+		"threads": 10,
+		"data/thread": 500.0,
+		"select": {
+			"exec": 2898.9000000000007,
+			"resp": 4036.0519
+		},
+		"insert": {
+			"exec": 17360.4,
+			"resp": 17214.9702
+		}
+	},
+	{
+		"datasize": 10000,
+		"threads": 10,
+		"data/thread": 1000.0,
+		"select": {
+			"exec": 3517.7999999999999,
+			"resp": 5121.999799999999
+		},
+		"insert": {
+			"exec": 25627.9,
+			"resp": 25280.848400000003
+		}
+	},
+	{
+		"datasize": 20,
+		"threads": 20,
+		"data/thread": 1.0,
+		"select": {
+			"exec": 117.5,
+			"resp": 487.74550000000007
+		},
+		"insert": {
+			"exec": 9895.099999999999,
+			"resp": 9907.695500000002
+		}
+	},
+	{
+		"datasize": 30,
+		"threads": 20,
+		"data/thread": 1.5,
+		"select": {
+			"exec": 314.5,
+			"resp": 1067.8701
+		},
+		"insert": {
+			"exec": 6009.0,
+			"resp": 6016.271199999999
+		}
+	},
+	{
+		"datasize": 50,
+		"threads": 20,
+		"data/thread": 2.5,
+		"select": {
+			"exec": 272.0,
+			"resp": 784.9884
+		},
+		"insert": {
+			"exec": 4058.900000000001,
+			"resp": 4075.6713
+		}
+	},
+	{
+		"datasize": 100,
+		"threads": 20,
+		"data/thread": 5.0,
+		"select": {
+			"exec": 229.1,
+			"resp": 694.2938
+		},
+		"insert": {
+			"exec": 28915.2,
+			"resp": 28951.807
+		}
+	},
+	{
+		"datasize": 200,
+		"threads": 20,
+		"data/thread": 10.0,
+		"select": {
+			"exec": 561.5,
+			"resp": 1548.1005999999998
+		},
+		"insert": {
+			"exec": 8199.6,
+			"resp": 8215.548200000001
+		}
+	},
+	{
+		"datasize": 300,
+		"threads": 20,
+		"data/thread": 15.0,
+		"select": {
+			"exec": 241.8,
+			"resp": 989.2408
+		},
+		"insert": {
+			"exec": 19839.100000000002,
+			"resp": 19779.8289
+		}
+	},
+	{
+		"datasize": 500,
+		"threads": 20,
+		"data/thread": 25.0,
+		"select": {
+			"exec": 584.9000000000001,
+			"resp": 1460.7472
+		},
+		"insert": {
+			"exec": 2403.0,
+			"resp": 2379.3911000000005
+		}
+	},
+	{
+		"datasize": 1000,
+		"threads": 20,
+		"data/thread": 50.0,
+		"select": {
+			"exec": 759.6999999999999,
+			"resp": 1850.8751000000003
+		},
+		"insert": {
+			"exec": 2862.600000000001,
+			"resp": 2848.1210999999996
+		}
+	},
+	{
+		"datasize": 2000,
+		"threads": 20,
+		"data/thread": 100.0,
+		"select": {
+			"exec": 2062.5,
+			"resp": 4045.4698999999998
+		},
+		"insert": {
+			"exec": 20140.899999999998,
+			"resp": 20065.6889
+		}
+	},
+	{
+		"datasize": 3000,
+		"threads": 20,
+		"data/thread": 150.0,
+		"select": {
+			"exec": 1569.3999999999999,
+			"resp": 2795.2321000000008
+		},
+		"insert": {
+			"exec": 27343.69999999999,
+			"resp": 27275.249699999993
+		}
+	},
+	{
+		"datasize": 4000,
+		"threads": 20,
+		"data/thread": 200.0,
+		"select": {
+			"exec": 2230.4,
+			"resp": 4147.8532000000009
+		},
+		"insert": {
+			"exec": 30745.099999999995,
+			"resp": 30593.8342
+		}
+	},
+	{
+		"datasize": 5000,
+		"threads": 20,
+		"data/thread": 250.0,
+		"select": {
+			"exec": 3506.7,
+			"resp": 5680.4337000000009
+		},
+		"insert": {
+			"exec": 25682.1,
+			"resp": 25596.6771
+		}
+	},
+	{
+		"datasize": 10000,
+		"threads": 20,
+		"data/thread": 500.0,
+		"select": {
+			"exec": 6851.800000000001,
+			"resp": 9895.907600000002
+		},
+		"insert": {
+			"exec": 63609.49999999999,
+			"resp": 63349.18469999999
+		}
+	},
+	{
+		"datasize": 50,
+		"threads": 50,
+		"data/thread": 1.0,
+		"select": {
+			"exec": 1243.8,
+			"resp": 3984.7737000000008
+		},
+		"insert": {
+			"exec": 18364.100000000002,
+			"resp": 18178.014600000002
+		}
+	},
+	{
+		"datasize": 100,
+		"threads": 50,
+		"data/thread": 2.0,
+		"select": {
+			"exec": 983.0,
+			"resp": 2664.7439999999999
+		},
+		"insert": {
+			"exec": 16608.7,
+			"resp": 16517.9236
+		}
+	},
+	{
+		"datasize": 200,
+		"threads": 50,
+		"data/thread": 4.0,
+		"select": {
+			"exec": 949.6,
+			"resp": 2545.6220999999998
+		},
+		"insert": {
+			"exec": 45428.500000000015,
+			"resp": 45374.55819999998
+		}
+	},
+	{
+		"datasize": 300,
+		"threads": 50,
+		"data/thread": 6.0,
+		"select": {
+			"exec": 536.1,
+			"resp": 1791.6478000000003
+		},
+		"insert": {
+			"exec": 17511.2,
+			"resp": 17207.7274
+		}
+	},
+	{
+		"datasize": 500,
+		"threads": 50,
+		"data/thread": 10.0,
+		"select": {
+			"exec": 1525.1,
+			"resp": 3770.1756
+		},
+		"insert": {
+			"exec": 10112.000000000004,
+			"resp": 9960.143900000006
+		}
+	},
+	{
+		"datasize": 1000,
+		"threads": 50,
+		"data/thread": 20.0,
+		"select": {
+			"exec": 2219.3999999999998,
+			"resp": 4567.1569
+		},
+		"insert": {
+			"exec": 12960.100000000004,
+			"resp": 12654.8052
+		}
+	},
+	{
+		"datasize": 2000,
+		"threads": 50,
+		"data/thread": 40.0,
+		"select": {
+			"exec": 3635.8,
+			"resp": 6783.829700000001
+		},
+		"insert": {
+			"exec": 11257.6,
+			"resp": 11005.0338
+		}
+	},
+	{
+		"datasize": 3000,
+		"threads": 50,
+		"data/thread": 60.0,
+		"select": {
+			"exec": 3855.7999999999994,
+			"resp": 7183.855800000001
+		},
+		"insert": {
+			"exec": 35736.299999999996,
+			"resp": 35612.531800000004
+		}
+	},
+	{
+		"datasize": 4000,
+		"threads": 50,
+		"data/thread": 80.0,
+		"select": {
+			"exec": 7311.9000000000019,
+			"resp": 11011.232299999998
+		},
+		"insert": {
+			"exec": 65132.79999999999,
+			"resp": 64876.27120000002
+		}
+	},
+	{
+		"datasize": 5000,
+		"threads": 50,
+		"data/thread": 100.0,
+		"select": {
+			"exec": 12334.499999999996,
+			"resp": 18450.348400000003
+		},
+		"insert": {
+			"exec": 28897.600000000006,
+			"resp": 28715.909999999996
+		}
+	},
+	{
+		"datasize": 10000,
+		"threads": 50,
+		"data/thread": 200.0,
+		"select": {
+			"exec": 27662.3,
+			"resp": 38302.29250000001
+		},
+		"insert": {
+			"exec": 102114.80000000003,
+			"resp": 101649.9842
+		}
+	},
+	{
+		"datasize": 100,
+		"threads": 100,
+		"data/thread": 1.0,
+		"select": {
+			"exec": 1774.7,
+			"resp": 4873.109299999999
+		},
+		"insert": {
+			"exec": 131619.29999999997,
+			"resp": 131117.17590000004
+		}
+	},
+	{
+		"datasize": 200,
+		"threads": 100,
+		"data/thread": 2.0,
+		"select": {
+			"exec": 3611.4999999999988,
+			"resp": 9139.756800000003
+		},
+		"insert": {
+			"exec": 23097.100000000006,
+			"resp": 21454.895499999995
+		}
+	},
+	{
+		"datasize": 300,
+		"threads": 100,
+		"data/thread": 3.0,
+		"select": {
+			"exec": 6085.7,
+			"resp": 15358.9102
+		},
+		"insert": {
+			"exec": 18076.499999999996,
+			"resp": 16502.09689999999
+		}
+	},
+	{
+		"datasize": 500,
+		"threads": 100,
+		"data/thread": 5.0,
+		"select": {
+			"exec": 3840.4,
+			"resp": 9186.1952
+		},
+		"insert": {
+			"exec": 11094.800000000001,
+			"resp": 9343.420399999999
+		}
+	},
+	{
+		"datasize": 1000,
+		"threads": 100,
+		"data/thread": 10.0,
+		"select": {
+			"exec": 5120.3,
+			"resp": 12388.913700000003
+		},
+		"insert": {
+			"exec": 27049.9,
+			"resp": 26333.770500000002
+		}
+	},
+	{
+		"datasize": 2000,
+		"threads": 100,
+		"data/thread": 20.0,
+		"select": {
+			"exec": 6872.9,
+			"resp": 15192.164399999998
+		},
+		"insert": {
+			"exec": 109018.79999999999,
+			"resp": 107303.37290000005
+		}
+	},
+	{
+		"datasize": 3000,
+		"threads": 100,
+		"data/thread": 30.0,
+		"select": {
+			"exec": 24821.2,
+			"resp": 42395.126
+		},
+		"insert": {
+			"exec": 37522.00000000002,
+			"resp": 36370.57290000001
+		}
+	},
+	{
+		"datasize": 4000,
+		"threads": 100,
+		"data/thread": 40.0,
+		"select": {
+			"exec": 29944.500000000007,
+			"resp": 50617.877599999985
+		},
+		"insert": {
+			"exec": 887780.5000000001,
+			"resp": 85871.60080000003
+		}
+	},
+	{
+		"datasize": 5000,
+		"threads": 100,
+		"data/thread": 50.0,
+		"select": {
+			"exec": 22659.300000000003,
+			"resp": 44561.335399999996
+		},
+		"insert": {
+			"exec": 70863.69999999998,
+			"resp": 69556.6326
+		}
+	},
+	{
+		"datasize": 10000,
+		"threads": 100,
+		"data/thread": 100.0,
+		"select": {
+			"exec": 115384.99999999999,
+			"resp": 151492.07370000005
+		},
+		"insert": {
+			"exec": 236811.09999999996,
+			"resp": 235224.0130999999
+		}
+	}
+]

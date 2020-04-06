@@ -7,7 +7,9 @@ def randomString(stringLength):
     return ''.join(random.choice(string.ascii_letters) for i in range(stringLength))
 
 
-def create_table(cursor):
+def create_table():
+    connection = client.connect("http://localhost:4200/", username="crate",error_trace=True)
+    cursor=connection.cursor()
     cursor.execute("DROP Table people;")
     print("DROP Table people;")
     cursor.execute("DROP Table student;")
@@ -25,17 +27,21 @@ def create_table(cursor):
     sql+="DEGREE text NOT NULL );"
     print(sql)
     cursor.execute(sql)
+    cursor.close()
+    connection.close()
 
-def measure_select(mycursor):
-    initresp = time.time_ns()
+def measure_select():
+    connection = client.connect("http://localhost:4200/", username="crate",error_trace=True)
+    mycursor=connection.cursor()
+    
     querry="SELECT current_timestamp;"
     mycursor.execute(querry)
     init=mycursor.fetchone()
     #print(init)
     querry="SELECT * FROM people p inner join student s on p.id=s.pid;"
-    
+    initresp = time.time_ns()
     mycursor.execute(querry)
-    
+    timeresp = time.time_ns()-initresp
     """result=cursor.fetchall()
     while result!=None:
         print(result)
@@ -45,15 +51,18 @@ def measure_select(mycursor):
     final=mycursor.fetchone()
     timeexec=final[0]-init[0] if (not final == None) and (not init == None) else 0
     #print(final)
-    timeresp = time.time_ns()-initresp
+    
     timeexec=0 if timeexec<0 else timeexec
+    mycursor.close()
+    connection.close()
     return {"exec":timeexec,"resp":timeresp/1000000}
 
-def measure_insert(mycursor,indrange):
-    initresp = time.time_ns()
+def measure_insert(indrange):
+    connection = client.connect("http://localhost:4200/", username="crate",error_trace=True)
+    cursor=connection.cursor()
     querry="SELECT current_timestamp;"
-    mycursor.execute(querry)
-    init=mycursor.fetchone()
+    cursor.execute(querry)
+    init=cursor.fetchone()
     #print(init)
     degree=["Math","Algebra","Analysis","Comedy","Drama","Classics","Biology","Anatomy","Chemistry"]
     vals=[]
@@ -65,7 +74,7 @@ def measure_insert(mycursor,indrange):
         vals.append((i,name,surname,age))
     #print(vals)
     sql = """INSERT INTO people (id,name,surname,age) VALUES (?,?,?,?)"""
-    
+    initresp = time.time_ns()
     result=cursor.executemany(sql,vals)
     succes=len(list(filter(lambda x :x['rowcount']==1,result)))
     #print(result)
@@ -77,25 +86,28 @@ def measure_insert(mycursor,indrange):
     #print(vals)
     sql = """INSERT INTO student (sid,pid,degree) VALUES (?,?,?)"""
     result=cursor.executemany(sql,vals)
+    timeresp=time.time_ns()-initresp
     #print(result)
-    mycursor.execute(querry)
-    final=mycursor.fetchone()
+    querry="SELECT current_timestamp;"
+    cursor.execute(querry)
+    final=cursor.fetchone()
     #print(final)
-    timeresp = time.time_ns()-initresp
     succes+=len(list(filter(lambda x :x['rowcount']==1,result)))
     succes/=2
     timeexec=final[0]-init[0] if (not final == None) and (not init == None) else 0
     timeexec=0 if timeexec<0 else timeexec
+    cursor.close()
+    connection.close()
     return {"exec":timeexec,"resp":timeresp/1000000,"succes":succes,"total":len(indrange)}
     
     
-def test_select(mycursor,threads_no):
+def test_select(threads_no):
     timevals=[]
     threads=[]
     with concurrent.futures.ThreadPoolExecutor() as executor:
         for i in range(threads_no):
             #rangelimit=range(i*threads_no,(i+1)*threads_no) if (i+1)*threads_no<datasize else range(i*threads_no,datasize)
-            future = executor.submit(measure_select,mycursor)
+            future = executor.submit(measure_select)
             threads.append(future)
         for thread in threads:
             while not thread.done():
@@ -107,13 +119,13 @@ def test_select(mycursor,threads_no):
     for val in timevals:
         resp_time+=val["resp"]
         exec_time+=val["exec"]
-    resp_time/=len(timevals)
-    exec_time/=len(timevals)
+    #resp_time/=len(timevals)
+    #exec_time/=len(timevals)
     print("select execution time "+str(exec_time))
     print("select response time "+str(resp_time))
     return {"exec":exec_time,"resp":resp_time}
 
-def test_insert(mycursor,datasize,threads_no):
+def test_insert(datasize,threads_no):
     timevals=[]
     threads=[]
     with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -121,7 +133,7 @@ def test_insert(mycursor,datasize,threads_no):
             start=int(i*(datasize/threads_no))
             end=int((i+1)*(datasize/threads_no)) if int((i+1)*(datasize/threads_no))<datasize else datasize
             print("start"+str(start)+" end "+str(end)+"|")
-            future = executor.submit(measure_insert,mycursor,range(start,end))
+            future = executor.submit(measure_insert,range(start,end))
             threads.append(future)
         for thread in threads:
             while not thread.done():
@@ -144,24 +156,24 @@ def test_insert(mycursor,datasize,threads_no):
     print("succes rate  "+str(succes)+"% ")
     return {"exec":exec_time,"resp":resp_time,"succes":succes}
 
-def test(cursor,datasize,threads_no):
+def test(datasize,threads_no):
     print("test "+str(datasize)+" threadsno "+str(threads_no))
-    create_table(cursor)
-    insert=test_insert(cursor,datasize,threads_no)
-    select=test_select(cursor,threads_no)
+    create_table()
+    insert=test_insert(datasize,threads_no)
+    select=test_select(threads_no)
     return {"datasize":datasize,"threads":threads_no,"data/thread":datasize/threads_no,"insert":insert,"select":select}
 
-connection = client.connect("http://localhost:4200/", username="crate",error_trace=True)
+#connection = client.connect("http://localhost:4200/", username="crate",error_trace=True)
 #create_table(connection)
-cursor = connection.cursor()
+#cursor = connection.cursor()
 threads_no=[1,5,10,20,50,100]
 datasize=[10,20,30,50,100,200,300,500,1000,2000,3000,4000,5000,10000]
 tests=[]
 for th in threads_no:
     for ds in datasize :
         if ds>=th:
-            tests.append(test(cursor,ds,th))
-cursor.close()
+            tests.append(test(ds,th))
+#cursor.close()
 file = open("result_cratedb.txt", "w")
 json.dump(tests,file)
 #file.write(str(tests))
