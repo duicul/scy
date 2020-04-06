@@ -68,7 +68,8 @@ if __name__ == '__main__':
             "list": l100}]
 
     file = open("result_neighborhood.txt", "w")
-    file.write(str(ret))
-    file.write("\r\n")
+    json.dump(ret,file)
+    #file.write(str(ret))
+    #file.write("\r\n")
     # file.write("Tns10/Tns8="+str(time10/time8))
     file.close()

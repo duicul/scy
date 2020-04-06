@@ -38,9 +38,10 @@ if __name__ == "__main__":
     ret.append({"size": 8, "time": time8, "times": time8 / 1000000000, "val": sum(l8), "length": len(l8), "list": l8})
     ret.append(
         {"size": 10, "time": time10, "times": time10 / 1000000000, "val": sum(l10), "length": len(l10), "list": l10})
-
+    ret.append({"Tns10/Tns8=":time10 / time8})
     file = open("result_backtracking.txt", "w")
-    file.write(str(ret))
-    file.write("\r\n")
-    file.write("Tns10/Tns8=" + str(time10 / time8))
+    json.dump(ret,file)
+    #file.write(str(ret))
+    #file.write("\r\n")
+    #file.write("Tns10/Tns8=" + str(time10 / time8))
     file.close()

@@ -1,4 +1,4 @@
-import time
+import time,json
 
 from basicfunctions import loaddata, add_el, rem_el, rem_2el
 
@@ -139,16 +139,16 @@ if __name__ == "__main__":
     print(l10)
     print(sum(l10))
     print("time10 " + str(time10) + " = " + str(time10 / 1000000000) + "s")
-    """"
+    
     init = time.time_ns()
-    l50 = tabu_search(current_sol['IA50'])
+    l50 = tabu_search(data['IA50'])
     time50 = time.time_ns() - init
     print(l50)
     print(sum(l50))
     print("time50 " + str(time50) + " = " + str(time50 / 1000000000) + "s")
 
     init = time.time_ns()
-    l100 = tabu_search(current_sol['IA100'])
+    l100 = tabu_search(data['IA100'])
     time100 = time.time_ns() - init
     print(l100)
     print(sum(l100))
@@ -161,6 +161,7 @@ if __name__ == "__main__":
             "list": l100}]
     
     file = open("result_tabu.txt", "w")
-    file.write(str(ret))
-    file.close()"""
+    json.dump(ret,file)
+    #file.write(str(ret))
+    file.close()
     print("finish")

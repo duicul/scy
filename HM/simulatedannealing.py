@@ -102,6 +102,7 @@ if __name__ == "__main__":
                     "length": len(l100[i]), "list": l100[i]})
 
     file = open("result_annealing.txt", "w")
-    file.write(str(ret))
+    json.dump(ret,file)
+    #file.write(str(ret))
     file.close()
     print("finish")
