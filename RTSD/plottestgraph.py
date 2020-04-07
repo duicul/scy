@@ -2,8 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 import traceback
+import os
 
 def plot_cratedb(threads_no,datasize,data,prefix,name):
+    if not os.path.exists(name):
+        os.makedirs(name)
     resp_array_sel=[]
     resp_array_val_sel=[]
     exec_array_sel=[]
@@ -47,7 +50,7 @@ def plot_cratedb(threads_no,datasize,data,prefix,name):
         #plt.plot(x,y_ins_exec,label="insert execution time")
         plt.title(str(th)+" Threads total time for datasize\n(datasize split equally per threads)\n"+name)
         plt.legend()
-        plt.savefig(prefix+str(th)+".png")
+        plt.savefig(name+"/"+prefix+str(th)+".png")
         plt.close()
     for ds in [1000,3000,5000,10000]:
         array_th=[]
@@ -85,65 +88,72 @@ def plot_cratedb(threads_no,datasize,data,prefix,name):
         #plt.plot(x,y_ins_exec,label="insert execution time")
         plt.title(str(ds)+" Datasize total time for for different thread numbers\n"+name)
         plt.legend()
-        plt.savefig(prefix+"data"+str(ds)+".png")
+        plt.savefig(name+"/"+prefix+"data"+str(ds)+".png")
         plt.close()
 
-def compare(datas,names,datasize):
+def compare(datas,names,datasize,threads,directory):
     if not len(datas) == len(names):
         return
-    thr=[1]
-    y=[]
-    x=np.array(datasize)
-    for data in datas:
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    for th in threads:
+        y=[]
+        x=np.array(datasize)
+        xaux=[]
+        for data in datas:
             yaux=[]
             yaux.append([])
             yaux.append([])
-            print(yaux)
+            yaux.append([])
+            #print(yaux)
             for tv in data:
+                xaux=[]
                 for ds in datasize:
                      try: 
-                        if int(tv["datasize"]) == ds and int(tv["threads"])== 1:
+                        if int(tv["datasize"]) == ds and int(tv["threads"])== th:
                             sel=tv["select"]
                             ins=tv["insert"]
                             yaux[0].append(sel["resp"])
                             yaux[1].append(ins["resp"])
+                            yaux[2].append(ds)
                      except KeyError:
                             print(traceback.format_exc())
                             pass
             y.append(yaux)
-    plt.xlabel("datasize")
-    plt.ylabel("ms")
-    comp=""
-    suffile=""
-    for name in names:
-        comp+=name+" "
-        suffile+=name
-    plt.title("Comparasion between "+str(comp))
-    for i in range(len(y)):
-        yi=y[i]
-        #print(x)
-        #print(len(y)) 
-        plt.plot(x,np.array(yi[0]),label="select time "+str(names[i]))
-        #plt.plot(x,np.array(yi[1]),label="insert time "+str(names[i]))
 
-    
-    
-    plt.legend()
-    plt.savefig("comparasionselect"+suffile+".png")
-    plt.close()
+        x=np.array(xaux)
+        plt.xlabel("datasize")
+        plt.ylabel("ms")
+        comp=""
+        suffile=""
+        for name in names:
+            comp+=name+" "
+            suffile+=name
+        plt.title("Comparasion between "+str(comp)+"\n"+str(th)+" threads")
+        for i in range(len(y)):
+            yi=y[i]
+            #print(x)
+            #print(names)
+            name=names[i]
+            plt.plot(np.array(yi[2]),np.array(yi[0]),label="select time "+name)
+            #plt.plot(x,np.array(yi[1]),label="insert time "+str(names[i]))
 
-    plt.xlabel("datasize")
-    plt.ylabel("ms")
-    plt.title("Comparasion between "+str(comp))
-    for i in range(len(y)):
-        yi=y[i]
-        #print(x)
-        #print(len(y)) 
-        #plt.plot(x,np.array(yi[0]),label="select time "+str(names[i]))
-        plt.plot(x,np.array(yi[1]),label="insert time "+str(names[i]))
-    plt.legend()
-    plt.savefig("comparasioninsert"+suffile+".png")
-    plt.close()
+        plt.legend()
+        plt.savefig(directory+"/"+"comparasionselect"+suffile+str(th)+".png")
+        plt.close()
+
+        plt.xlabel("datasize")
+        plt.ylabel("ms")
+        plt.title("Comparasion between "+str(comp)+"\n"+str(th)+" threads")
+        for i in range(len(y)):
+            yi=y[i]
+            #print(x)
+            #print(len(y)) 
+            #plt.plot(x,np.array(yi[0]),label="select time "+str(names[i]))
+            plt.plot(np.array(yi[2]),np.array(yi[1]),label="insert time "+str(names[i]))
+        plt.legend()
+        plt.savefig(directory+"/"+"comparasioninsert"+suffile+str(th)+".png")
+        plt.close()
 
 if __name__=="__main__":
     f = open("result_cratedb.txt", "r")
@@ -158,9 +168,9 @@ if __name__=="__main__":
 
     threads_no=[1,5,10,20,50,100]
     datasize=[10,20,30,50,100,200,300,500,1000,2000,3000,4000,5000,10000]
-    """
+    
     plot_cratedb(threads_no,datasize,data_cratedb,"cratedb","CrateDB")
     plot_cratedb(threads_no,datasize,data_mariadb,"mariadb","MariaDB")
-    plot_cratedb(threads_no,datasize,data_sqllite,"sqlite","SQLite")"""
-    compare([data_cratedb,data_mariadb,data_sqllite],["CrateDB","MariaDB","SQLite"],datasize)
-    compare([data_cratedb,data_mariadb],["CrateDB","MariaDB"],datasize)
+    plot_cratedb(threads_no,datasize,data_sqllite,"sqlite","SQLite")
+    compare([data_cratedb,data_mariadb,data_sqllite],["CrateDB","MariaDB","SQLite"],datasize,[1,100],"comparasion")
+    compare([data_cratedb,data_mariadb],["CrateDB","MariaDB"],datasize,[1,100],"comparasion")
