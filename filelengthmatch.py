@@ -4,8 +4,8 @@ import time
 import traceback
 import threading
 import concurrent.futures
-
-data_log=""
+import json 
+data_log=[]
 
 def video_len(path,measure_len):
     #print()
@@ -33,7 +33,7 @@ def video_len(path,measure_len):
     return len_vid
 
 def match(file1,aux_file,ind1,dur1,size1,total,measure_len):
-    data_log=""
+    data_log=[]
     no_files=len(aux_file)
     for ind2 in range(ind1+1,no_files):
             perc=ind2/no_files
@@ -52,19 +52,22 @@ def match(file1,aux_file,ind1,dur1,size1,total,measure_len):
                     else:
                         size2=aux_file[ind2][3]
                     if aux_file[ind1][0] == aux_file[ind2][0]:
-                        data_log=data_log+("\nMatch name: \n"+file1+"\n "+file2)
+                        data_log.append({"match":"name","value":aux_file[ind1][0],"file1":file1,"file2":file2})
+                        #data_log=data_log+("\nMatch name: \n"+file1+"\n "+file2)
                         print("\nMatch name: "+aux_file[ind1][1])
                         print(file1)
                         print(file2)
                         print()
                     elif size1 == size2 and size1!=False and size2!=False:
-                        data_log=data_log+("\nMatch size: "+str(size1)+"\n "+file1+"\n "+file2)
+                        data_log.append({"match":"size","value":size1,"file1":file1,"file2":file2})
+                        #data_log=data_log+("\nMatch size: "+str(size1)+"\n "+file1+"\n "+file2)
                         print("\nMatch size: "+str(size1)+" "+file1+" "+file2)
                         print(file1)
                         print(file2)
                         print()
                     elif dur1 == dur2 and dur1!=False and dur2!=False :
-                        data_log=data_log+("\nMatch duration: "+str(dur1)+"\n "+file1+"\n "+file2)
+                        data_log.append({"match":"duration","value":dur1,"file1":file1,"file2":file2})
+                        #data_log=data_log+("\nMatch duration: "+str(dur1)+"\n "+file1+"\n "+file2)
                         print("\nMatch duration: "+str(dur1))
                         print(file1)
                         print(file2)
@@ -73,12 +76,13 @@ def match(file1,aux_file,ind1,dur1,size1,total,measure_len):
                     print(file1+" "+str(dur1))
                     print(file2+" "+str(dur2))
                     print(traceback.format_exc())
-                    data_log=data_log+("\n"+traceback.format_exc())
+                    datalog.append({"error":traceback.format_exc()})
+                    #data_log=data_log+("\n"+traceback.format_exc())
     return data_log
                     
 
 def join_threads(thread_list):
-    return_value=""
+    return_value=[]
     for thread in thread_list:
         while not thread.done():
                 pass
@@ -86,7 +90,7 @@ def join_threads(thread_list):
     return return_value
 
 def parse_dir(paths,max_threads,outputfile,measure_len):
-    data_log=""
+    data_log=[]
     init=time.time()
     # List to store all   
     # directories  
@@ -108,7 +112,8 @@ def parse_dir(paths,max_threads,outputfile,measure_len):
     #print(aux_file)    
     no_files=len(aux_file)
     print("Files: "+str(no_files))
-    data_log=data_log+"Files: "+str(no_files)
+    data_log.append({"file_no":no_files})
+    #data_log=data_log+"Files: "+str(no_files)
     total=0
     status_tot=[]
     thread_list=[]
@@ -121,7 +126,7 @@ def parse_dir(paths,max_threads,outputfile,measure_len):
                 print(str(i+1)+"%")
         if ind1 == 1:
             print("Finished first pass")
-            data_log=data_log+"\nFinished first pass\n"
+            #data_log=data_log+"\nFinished first pass\n"
         perc_tot=ind1/no_files
         #for i in range(len(status_tot)):
         #    if not status_tot[i]:
@@ -158,12 +163,14 @@ def parse_dir(paths,max_threads,outputfile,measure_len):
     for t in thread_list:
         t.join()
     print(path)
-    data_log=data_log+"\nOperations: "+str(total)
-    data_log=data_log+"\n"+str(time.time()-init)
+    data_log.append({"Operations":total,"Time":(time.time()-init)})
+    #data_log=data_log+"\nOperations: "+str(total)
+    #data_log=data_log+"\n"+str(time.time()-init)
     print("Operations: "+str(total))
     print(time.time()-init)
     f = open(outputfile, "w")
-    f.write(data_log)
+    json.dump(data_log,f)
+    #f.write(data_log)
     f.close()
     return L
 
