@@ -7,6 +7,10 @@ import os
 def plot_cratedb(threads_no,datasize,data,prefix,name):
     if not os.path.exists(name):
         os.makedirs(name)
+    if not os.path.exists(name+"/threads"):
+        os.makedirs(name+"/threads")
+    if not os.path.exists(name+"/datasize"):
+        os.makedirs(name+"/datasize")
     resp_array_sel=[]
     resp_array_val_sel=[]
     exec_array_sel=[]
@@ -50,7 +54,7 @@ def plot_cratedb(threads_no,datasize,data,prefix,name):
         #plt.plot(x,y_ins_exec,label="insert execution time")
         plt.title(str(th)+" Threads total time for datasize\n(datasize split equally per threads)\n"+name)
         plt.legend()
-        plt.savefig(name+"/"+prefix+str(th)+".png")
+        plt.savefig(name+"/threads/"+prefix+str(th)+".png")
         plt.close()
     for ds in [1000,3000,5000,10000]:
         array_th=[]
@@ -88,7 +92,7 @@ def plot_cratedb(threads_no,datasize,data,prefix,name):
         #plt.plot(x,y_ins_exec,label="insert execution time")
         plt.title(str(ds)+" Datasize total time for for different thread numbers\n"+name)
         plt.legend()
-        plt.savefig(name+"/"+prefix+"data"+str(ds)+".png")
+        plt.savefig(name+"/datasize/"+prefix+"data"+str(ds)+".png")
         plt.close()
 
 def compare(datas,names,datasize,threads,directory):
@@ -96,6 +100,12 @@ def compare(datas,names,datasize,threads,directory):
         return
     if not os.path.exists(directory):
         os.makedirs(directory)
+    if not os.path.exists(directory+"/both"):
+        os.makedirs(directory+"/both")
+    if not os.path.exists(directory+"/insert"):
+        os.makedirs(directory+"/insert")
+    if not os.path.exists(directory+"/select"):
+        os.makedirs(directory+"/select")
     for th in threads:
         y=[]
         x=np.array(datasize)
@@ -139,7 +149,7 @@ def compare(datas,names,datasize,threads,directory):
             #plt.plot(x,np.array(yi[1]),label="insert time "+str(names[i]))
 
         plt.legend()
-        plt.savefig(directory+"/"+"comparasionselect"+suffile+str(th)+".png")
+        plt.savefig(directory+"/select/"+"comparasionselect"+suffile+str(th)+".png")
         plt.close()
 
         plt.xlabel("datasize")
@@ -152,7 +162,21 @@ def compare(datas,names,datasize,threads,directory):
             #plt.plot(x,np.array(yi[0]),label="select time "+str(names[i]))
             plt.plot(np.array(yi[2]),np.array(yi[1]),label="insert time "+str(names[i]))
         plt.legend()
-        plt.savefig(directory+"/"+"comparasioninsert"+suffile+str(th)+".png")
+        plt.savefig(directory+"/insert/"+"comparasioninsert"+suffile+str(th)+".png")
+        plt.close()
+
+        plt.xlabel("datasize")
+        plt.ylabel("ms")
+        plt.title("Comparasion between "+str(comp)+"\n"+str(th)+" threads")
+        for i in range(len(y)):
+            yi=y[i]
+            #print(x)
+            #print(len(y))
+            name=names[i]
+            plt.plot(np.array(yi[2]),np.array(yi[0]),label="select time "+name)
+            plt.plot(np.array(yi[2]),np.array(yi[1]),label="insert time "+name)
+        plt.legend()
+        plt.savefig(directory+"/both/"+"comparasion"+suffile+str(th)+".png")
         plt.close()
 
 if __name__=="__main__":
