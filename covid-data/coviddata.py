@@ -5,7 +5,7 @@ import traceback
 import requests
 import matplotlib.dates
 import datetime
-countries=["romania","germany","italy","hungary","spain","portugal"]
+countries=["romania","germany","italy","hungary","spain","portugal","hungary","austria","denmark","france"]#,"united-states"]
 x=[]
 y=[]
 xgrow=[]
@@ -20,13 +20,43 @@ for c in countries:
     ygrowa=[]
     cnt=0
     init=0
-    for rec in r.json():
-        d=datetime.datetime.strptime(rec["Date"], "%Y-%m-%dT%H:%M:%SZ")
-        xaux.append(d)
-        yaux.append(rec["Cases"])
-        xgrowa.append(d)
-        ygrowa.append(int(rec["Cases"])-init)
-        init=int(rec["Cases"])
+    date_init=None
+    prev_app=0
+    if c=="united-states" or c=="china":
+        for rec in r.json():
+            d=datetime.datetime.strptime(rec["Date"], "%Y-%m-%dT%H:%M:%SZ")
+            if date_init != None and date_init.year == d.year and  date_init.month == d.month and date_init.day == d.day:
+                #print("yes")
+                #yaux.append(rec["Cases"]+init)
+                #ygrowa.append(int(rec["Cases"])-init)
+                init=abs(int(rec["Cases"]))+init
+            else :
+                init+=rec["Cases"]
+                xaux.append(d)
+                yaux.append(abs(init))
+                xgrowa.append(d)
+                ygrowa.append(init-prev_app)
+                prev_app=init
+                init=0#int(rec["Cases"])
+                date_init=d
+    else:
+        for rec in r.json():       
+            if int(rec["Cases"]) ==0:
+                continue
+            try:
+                prov=rec["Province"]
+                continue
+            except KeyError:
+                pass
+            d=datetime.datetime.strptime(rec["Date"], "%Y-%m-%dT%H:%M:%SZ")
+            init+=rec["Cases"]
+            xaux.append(d)
+            yaux.append(abs(init))
+            xgrowa.append(d)
+            ygrowa.append(int(rec["Cases"])-prev_app)
+            prev_app=init
+            init=0#int(rec["Cases"])
+            date_init=d
     x.append(xaux)
     y.append(yaux)
     xgrow.append(xgrowa)
