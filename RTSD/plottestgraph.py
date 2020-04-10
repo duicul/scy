@@ -173,8 +173,8 @@ def compare(datas,names,datasize,threads,directory):
             #print(x)
             #print(len(y))
             name=names[i]
-            plt.plot(np.array(yi[2]),np.array(yi[0]),label="select time "+name)
-            plt.plot(np.array(yi[2]),np.array(yi[1]),label="insert time "+name)
+            plt.plot_date(np.array(yi[2]),np.array(yi[0]),label="select time "+name)
+            plt.plot_date(np.array(yi[2]),np.array(yi[1]),label="insert time "+name)
         plt.legend()
         plt.savefig(directory+"/both/"+"comparasion"+suffile+str(th)+".png")
         plt.close()
