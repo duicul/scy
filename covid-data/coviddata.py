@@ -5,7 +5,7 @@ import traceback
 import requests
 import matplotlib.dates
 import datetime
-countries=["romania","germany","italy","hungary","spain","portugal","hungary","austria","denmark","france"]#,"united-states"]
+countries=["romania","germany","italy","hungary","spain","portugal","hungary","austria","denmark"]#,"france"]#,"united-states"]
 x=[]
 y=[]
 xgrow=[]
