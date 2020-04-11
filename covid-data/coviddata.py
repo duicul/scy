@@ -173,7 +173,7 @@ def generate_graphs(countries,filename):
         xgrow[i].pop()
         ygrow[i].pop()
         
-    (yconvval,yconvgrow)=apply_convolution(x,y,xgrow,ygrow,10)
+    (yconvval,yconvgrow)=apply_convolution(x,y,xgrow,ygrow,5)
     
     pred=[]
     for i in range(len(yconvval)):
@@ -181,7 +181,13 @@ def generate_graphs(countries,filename):
         yi=yconvval[i]
         yj=y[i]
         predval=(yj[len(yj)-2]/yi[len(yi)-2])*yi[len(yi)-1]
-        pred.append({"country":countries[i],"val":predval,"date":str(xi[len(xi)-1])})
+        
+        xig=xgrow[i]
+        yig=yconvgrow[i]
+        yjg=ygrow[i]
+        predgrow=yig[len(yig)-1]#"""(yjg[len(yjg)-2]/yig[len(yig)-2])*"""
+        
+        pred.append({"country":countries[i],"val":predval,"growth":predgrow,"date":str(xi[len(xi)-1])})
         
     today=datetime.datetime.today()
     file = open(str(today.day)+"_"+str(today.month)+filename+"prediction.txt", "w")

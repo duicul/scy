@@ -1,1 +1,1 @@
-[{"country": "united-kingdom", "val": 72124.02785383142, "date": "2020-04-10 00:00:00"}]
+[{"country": "united-kingdom", "val": 71098.68642188357, "growth": 4634.8, "date": "2020-04-10 00:00:00"}]
