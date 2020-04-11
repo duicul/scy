@@ -86,21 +86,22 @@ def apply_convolution(x,y,xgrow,ygrow,conv_len):
     yconvval=[]
     for yi in y:
         yconva=[]
-        last_conv=0
+        
+        last_conv=sum([yi[j] for j in range(conv_len)])/conv_len
         for i in range(conv_len-1):
             yconva.append(int(last_conv))
-        
         for i in range(conv_len-1,len(yi)):
             last_conv=sum([yi[j] for j in range(i-conv_len+1,i+1)])/conv_len
             yconva.append(last_conv)
 
-        
+        predval=yi[len(yi)-1]/yconva[len(yconva)-1]
+        yconva=list(map(lambda x : predval * x,yconva))
             
         yconvval.append(yconva)
     yconvgrow=[]
     for yi in ygrow:
         yconva=[]
-        last_conv=0
+        last_conv=sum([yi[j] for j in range(conv_len)])/conv_len
         for i in range(conv_len-1):
             yconva.append(int(last_conv))
             
@@ -108,6 +109,8 @@ def apply_convolution(x,y,xgrow,ygrow,conv_len):
             last_conv=sum([yi[j] for j in range(i-conv_len+1,i+1)])/conv_len
             yconva.append(last_conv)
 
+        redval=yi[len(yi)-1]/yconva[len(yconva)-1]
+        yconva=list(map(lambda x : predval * x,yconva))
             
         yconvgrow.append(yconva)
     
@@ -173,7 +176,7 @@ def generate_graphs(countries,filename):
         xgrow[i].pop()
         ygrow[i].pop()
         
-    (yconvval,yconvgrow)=apply_convolution(x,y,xgrow,ygrow,5)
+    (yconvval,yconvgrow)=apply_convolution(x,y,xgrow,ygrow,10)
     
     pred=[]
     for i in range(len(yconvval)):
@@ -205,4 +208,5 @@ if __name__ == "__main__":
     generate_graphs(["romania"],"graphromania")
     generate_graphs(["united-states"],"graphus")
     generate_graphs(["united-kingdom"],"graphuk")
+    generate_graphs(["romania","denmark"],"graphroden")
     
