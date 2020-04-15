@@ -1,0 +1,425 @@
+[
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 1,
+        "Status": "confirmed",
+        "Date": "2020-02-26T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 1,
+        "Status": "confirmed",
+        "Date": "2020-02-27T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 3,
+        "Status": "confirmed",
+        "Date": "2020-02-28T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 3,
+        "Status": "confirmed",
+        "Date": "2020-02-29T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 3,
+        "Status": "confirmed",
+        "Date": "2020-03-01T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 3,
+        "Status": "confirmed",
+        "Date": "2020-03-02T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 3,
+        "Status": "confirmed",
+        "Date": "2020-03-03T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 4,
+        "Status": "confirmed",
+        "Date": "2020-03-04T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 6,
+        "Status": "confirmed",
+        "Date": "2020-03-05T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 9,
+        "Status": "confirmed",
+        "Date": "2020-03-06T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 9,
+        "Status": "confirmed",
+        "Date": "2020-03-07T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 15,
+        "Status": "confirmed",
+        "Date": "2020-03-08T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 15,
+        "Status": "confirmed",
+        "Date": "2020-03-09T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 25,
+        "Status": "confirmed",
+        "Date": "2020-03-10T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 45,
+        "Status": "confirmed",
+        "Date": "2020-03-11T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 49,
+        "Status": "confirmed",
+        "Date": "2020-03-12T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 89,
+        "Status": "confirmed",
+        "Date": "2020-03-13T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 123,
+        "Status": "confirmed",
+        "Date": "2020-03-14T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 131,
+        "Status": "confirmed",
+        "Date": "2020-03-15T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 158,
+        "Status": "confirmed",
+        "Date": "2020-03-16T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 184,
+        "Status": "confirmed",
+        "Date": "2020-03-17T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 260,
+        "Status": "confirmed",
+        "Date": "2020-03-18T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 277,
+        "Status": "confirmed",
+        "Date": "2020-03-19T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 308,
+        "Status": "confirmed",
+        "Date": "2020-03-20T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 367,
+        "Status": "confirmed",
+        "Date": "2020-03-21T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 433,
+        "Status": "confirmed",
+        "Date": "2020-03-22T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 576,
+        "Status": "confirmed",
+        "Date": "2020-03-23T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 794,
+        "Status": "confirmed",
+        "Date": "2020-03-24T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 906,
+        "Status": "confirmed",
+        "Date": "2020-03-25T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 1029,
+        "Status": "confirmed",
+        "Date": "2020-03-26T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 1292,
+        "Status": "confirmed",
+        "Date": "2020-03-27T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 1452,
+        "Status": "confirmed",
+        "Date": "2020-03-28T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 1815,
+        "Status": "confirmed",
+        "Date": "2020-03-29T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 2109,
+        "Status": "confirmed",
+        "Date": "2020-03-30T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 2245,
+        "Status": "confirmed",
+        "Date": "2020-03-31T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 2460,
+        "Status": "confirmed",
+        "Date": "2020-04-01T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 2738,
+        "Status": "confirmed",
+        "Date": "2020-04-02T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 3183,
+        "Status": "confirmed",
+        "Date": "2020-04-03T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 3613,
+        "Status": "confirmed",
+        "Date": "2020-04-04T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 3864,
+        "Status": "confirmed",
+        "Date": "2020-04-05T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 4057,
+        "Status": "confirmed",
+        "Date": "2020-04-06T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 4417,
+        "Status": "confirmed",
+        "Date": "2020-04-07T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 4761,
+        "Status": "confirmed",
+        "Date": "2020-04-08T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 5202,
+        "Status": "confirmed",
+        "Date": "2020-04-09T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 5467,
+        "Status": "confirmed",
+        "Date": "2020-04-10T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 5990,
+        "Status": "confirmed",
+        "Date": "2020-04-11T00:00:00Z"
+    },
+    {
+        "Country": "Romania",
+        "CountryCode": "RO",
+        "Lat": "45.94",
+        "Lon": "24.97",
+        "Cases": 5990,
+        "Status": "confirmed",
+        "Date": "2020-04-12T00:00:00Z"
+    }
+]

@@ -4,7 +4,7 @@ import json
 import traceback
 import os
 
-def plot_cratedb(threads_no,datasize,data,prefix,name):
+def plot_datadb(threads_no,datasize,data,prefix,name):
     if not os.path.exists(name):
         os.makedirs(name)
     if not os.path.exists(name+"/threads"):
@@ -193,8 +193,8 @@ if __name__=="__main__":
     threads_no=[1,5,10,20,50,100]
     datasize=[10,20,30,50,100,200,300,500,1000,2000,3000,4000,5000,10000]
     
-    plot_cratedb(threads_no,datasize,data_cratedb,"cratedb","CrateDB")
-    plot_cratedb(threads_no,datasize,data_mariadb,"mariadb","MariaDB")
-    plot_cratedb(threads_no,datasize,data_sqllite,"sqlite","SQLite")
+    plot_datadb(threads_no,datasize,data_cratedb,"cratedb","CrateDB")
+    plot_datadb(threads_no,datasize,data_mariadb,"mariadb","MariaDB")
+    plot_datadb(threads_no,datasize,data_sqllite,"sqlite","SQLite")
     compare([data_cratedb,data_mariadb,data_sqllite],["CrateDB","MariaDB","SQLite"],datasize,[1,100],"comparasion")
     compare([data_cratedb,data_mariadb],["CrateDB","MariaDB"],datasize,[1,100],"comparasion")

@@ -1,0 +1,1 @@
+[{"country": "romania", "val": 5132.0, "growth": 5132.0, "date": "2020-04-14 00:00:00"}, {"country": "germany", "val": 3778.0, "growth": 3778.0, "date": "2020-04-14 00:00:00"}]
