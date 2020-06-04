@@ -1,4 +1,5 @@
-import keras
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation,SimpleRNN
 from keras.optimizers import SGD

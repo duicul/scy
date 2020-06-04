@@ -10,9 +10,15 @@ def randomString(stringLength):
 def create_table():
     connection = client.connect("http://localhost:4200/", username="crate",error_trace=True)
     cursor=connection.cursor()
-    cursor.execute("DROP Table people;")
+    try:
+        cursor.execute("DROP Table people;")
+    except Exception:
+        pass
     print("DROP Table people;")
-    cursor.execute("DROP Table student;")
+    try:
+        cursor.execute("DROP Table student;")
+    except Exception:
+        pass
     print("DROP Table student;")
     sql="CREATE TABLE people("
     sql+="ID int NOT NULL primary key ,"
@@ -166,15 +172,25 @@ def test(datasize,threads_no):
 #connection = client.connect("http://localhost:4200/", username="crate",error_trace=True)
 #create_table(connection)
 #cursor = connection.cursor()
-threads_no=[1,5,10,20,50,100]
-datasize=[10,20,30,50,100,200,300,500,1000,2000,3000,4000,5000,10000]
-tests=[]
-for th in threads_no:
-    for ds in datasize :
-        if ds>=th:
-            tests.append(test(ds,th))
+#threads_no=[1,5,10,20,50,100]
+#datasize=[10,20,30,50,100,200,300,500,1000,2000,3000,4000,5000,10000]
+#tests=[]
+#for th in threads_no:
+#    for ds in datasize :
+#        if ds>=th:
+#            tests.append(test(ds,th))
 #cursor.close()
-file = open("result_cratedb.txt", "w")
-json.dump(tests,file)
-#file.write(str(tests))
-file.close()
+if __name__=="__main__":
+    t=[]
+    for i in range(100):
+        create_table()
+        t.append(measure_insert(range(1))["resp"])
+    average=sum(t)/len(t)
+    res={}
+    res["average"]=average
+    res["jitter%"]=((max(t)-average)/average)*100
+    res["data"]=t
+    file = open("result_cratedbjitter.txt", "w")
+    json.dump(res,file)
+    file.write(str(res))
+    file.close()
