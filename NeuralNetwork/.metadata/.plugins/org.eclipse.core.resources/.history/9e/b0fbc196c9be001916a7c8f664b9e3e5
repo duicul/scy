@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class InputLayer extends Layer {
+	private int size;
+	public InputLayer(int size) {
+		super(size);
+		this.size=size;
+	}
+
+	@Override
+	public List<Double> apply(List<Double> inp) {
+		return inp;
+	}
+	
+	public int size() {
+		return this.size;}
+	
+	public String toString() {
+		return size+" Inputs";}
+
+	@Override
+	public List<Double> train(List<Double> inp, List<Double> target) {
+		inp.parallelStream().map(x->0).collect(Collectors.toList());
+	}
+
+}
