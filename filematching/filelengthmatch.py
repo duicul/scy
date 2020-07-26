@@ -191,4 +191,4 @@ def parse_dir(paths,max_threads,outputfile,measure_len):
                     print()
 if __name__ == "__main__":
     data_log=""
-    parse_dir(["D:\ding\Star"],10,"log_file.txt",True)
+    parse_dir(["E:\ding\Star\White\BrittanyBardot"],10,"log_file.txt",True)

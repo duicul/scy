@@ -14,7 +14,10 @@ def handleRemoveReadonly(func, path, exc):
 
 
 def remove_duplicate(files):
+    print(str(len(files)-2)+" matches")
+    cnt=0
     for data in files:
+        
         match_type=None
         try:
             match_type=data["match"]
@@ -32,6 +35,8 @@ def remove_duplicate(files):
         elif match_type == "size":
             size1=data["value"]
             size2=data["value"]
+        cnt+=1
+        print(str(cnt)+"/"+str(len(files)-2))
         print("Match "+match_type)
         print("Choose delete: ")
         print("1 "+str(file1))
