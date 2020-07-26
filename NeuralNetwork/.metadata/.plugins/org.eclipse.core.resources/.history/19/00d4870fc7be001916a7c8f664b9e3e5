@@ -1,0 +1,44 @@
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class NeuralNetwork {
+	//private InputLayer il=null;
+	private List<Layer> layers;
+	
+	public NeuralNetwork() {
+		this.layers=new ArrayList<Layer>();
+	}
+	
+	public void addLayer(OutputLayer ol) {
+		if(this.layers.size()>0)
+			this.layers.add(ol);
+	}
+	
+	public void addLayer(InputLayer il) {
+		this.layers.set(0,il);
+	}
+	
+	public List<Double> forward(List<Double> inp) {
+		List<Double> result = inp;
+		for(Layer l:this.layers)
+			result=l.apply(result);
+		return result;
+	}
+	
+	public String toString() {
+		String s="";
+		s+="Input Layer \n";
+		s+=this.layers.get(0)+"\n";
+		for(int i=0;i<this.layers.size();i++) {
+			s+="Layer "+i+"\n";
+			s+=this.lys.get(i)+"\n";}
+		return s;}
+	
+	public List<Double> train(Double lr,List<Double> inps,List<Double> target){
+		List<Double> guess=this.forward(inps);
+		return guess;
+		
+	}
+	
+}

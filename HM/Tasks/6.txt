@@ -1,0 +1,1 @@
+Neighborhood search is better for bigger datasets/solution spaces at the expense of finding a global solution for finding a local minimum

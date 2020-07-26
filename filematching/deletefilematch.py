@@ -17,7 +17,6 @@ def remove_duplicate(files):
     print(str(len(files)-2)+" matches")
     cnt=0
     for data in files:
-        
         match_type=None
         try:
             match_type=data["match"]

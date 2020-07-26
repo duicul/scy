@@ -38,7 +38,7 @@ def generate_graphs():
     yrec=[]
     ytestzi=[]
     ynrtest=[]
-    
+    ycaznou=[]
     r = requests.get("https://covid19.geo-spatial.org/api/dashboard/getDailyCases")
     for rec in r.json()["data"]["data"]:
         #print(rec["Data"])
@@ -50,6 +50,7 @@ def generate_graphs():
         yrec.append(rec["Vindecati"])
         ytestzi.append(rec["Nr de teste pe zi"])
         ynrtest.append(rec["Nr de teste"])
+        ycaznou.append(rec["Cazuri"])
 
     fig, ax = plt.subplots()
     plt.title("Cases status ")
@@ -60,7 +61,8 @@ def generate_graphs():
     plt.plot(np.array(x),np.array(yac),label="Active")
     plt.plot(np.array(x),np.array(ydead),label="Morti")
     plt.plot(np.array(x),np.array(yrec),label="Recuperati")
-    plt.legend()        
+    plt.legend()
+    #plt.show()
     plt.savefig(direcdate+"/case_status"+".png")
     plt.close(fig)
 
@@ -70,7 +72,8 @@ def generate_graphs():
     plt.ylabel("Cases")
     ax.xaxis.set_tick_params(rotation=30, labelsize=10)
     plt.plot(np.array(x),np.array(ynrtest),label="Teste")
-    plt.legend()        
+    plt.legend()
+    #plt.show()
     plt.savefig(direcdate+"/test_status1"+".png")
     plt.close(fig)
 
@@ -80,9 +83,43 @@ def generate_graphs():
     plt.ylabel("Cases")
     ax.xaxis.set_tick_params(rotation=30, labelsize=10)
     plt.plot(np.array(x),np.array(ytestzi),label="Teste/zi")
-    plt.legend()        
+    plt.plot(np.array(x),np.array(ycaznou),label="Cazuri noi")
+    plt.legend()
+    #plt.show()
     plt.savefig(direcdate+"/test_status2"+".png")
     plt.close(fig)
+
+
+    fig, ax = plt.subplots()
+    plt.title("Test status ")
+    plt.xlabel("Date")
+    plt.ylabel("Cases")
+    ax.xaxis.set_tick_params(rotation=30, labelsize=10)
+    ytestpernou=[]
+    for i in range(len(x)):
+        if ytestzi[i]!=None and ycaznou[i]!=None:
+            ytestpernou.append(ytestzi[i]/ycaznou[i])
+        else:
+            ytestpernou.append(0)
+            print(i)
+    plt.plot(np.array(x),np.array(ytestpernou),label="Numar teste per caz nou")
+    plt.legend()
+    #plt.show()
+    plt.savefig(direcdate+"/test_statuspernewcase"+".png")
+    plt.close(fig)
+
+    fig, ax = plt.subplots()
+    plt.title("Test status ")
+    plt.xlabel("Date")
+    plt.ylabel("Cases")
+    ax.xaxis.set_tick_params(rotation=30, labelsize=10)
+    plt.plot(np.array(x[int(len(x)/2):(len(x)-1)]),np.array(ytestpernou[int(len(ytestpernou)/2):(len(ytestpernou)-1)]),label="Numar teste per caz nou")
+    plt.legend()
+    #plt.show()
+    plt.savefig(direcdate+"/test_statuspernewcasehalf"+".png")
+    plt.close(fig)
+
+
 
     estim_duration=75
     print(x[0])
@@ -91,6 +128,12 @@ def generate_graphs():
     poly_fit_tot5 = np.poly1d(np.polyfit([i for i in range(len(ytot))],ytot,3))
     poly_fit_ac4 = np.poly1d(np.polyfit([i for i in range(len(yac))],yac,4))
     poly_fit_tot4 = np.poly1d(np.polyfit([i for i in range(len(ytot))],ytot,4))
+
+    poly_fit_ac4grow=poly_fit_ac4.deriv(1)
+    poly_fit_ac4growrate=poly_fit_ac4.deriv(2)
+    poly_fit_tot4grow=poly_fit_tot4.deriv(1)
+    poly_fit_tot4growrate=poly_fit_tot4.deriv(2)
+    
     yregrac4=[poly_fit_ac4(i) for i in range(estim_duration)]
     yregrtot4=[poly_fit_tot4(i) for i in range(estim_duration)]
     yregrac5=[poly_fit_ac5(i) for i in range(estim_duration)]
@@ -106,7 +149,8 @@ def generate_graphs():
     plt.plot(np.array(daterange),np.array(yregrtot4),label="Confirmati_regr4")
     plt.plot(np.array(x),np.array(ytot),label="Confitrmati")
     plt.plot(np.array(x),np.array(yac),label="Active")
-    plt.legend()        
+    plt.legend()
+    #plt.show()
     plt.savefig(direcdate+"/regression_status"+".png")
     plt.close(fig)
 
@@ -131,9 +175,21 @@ def generate_graphs():
     ax.xaxis.set_tick_params(rotation=30, labelsize=10)
     plt.plot(np.array(xcon),np.array(ycon),label="Active convolution")
     plt.plot(np.array(x),np.array(yac),label="Active ")
-    plt.legend()        
+    plt.legend()
+    #plt.show()
     plt.savefig(direcdate+"/convolution_status"+".png")
     plt.close(fig)
+    
+    today=datetime.datetime.today()
+    day=str(today.day)
+    month=str(today.month)
+    suffix=day+"_"+month
+    data_predict=[]
+    for i in range(len(yregrac4)-len(yac)):
+        currind=len(ytot)+i
+        data_predict.append({"confirmedregr4":{"val":str(yregrtot4[currind]),"grow":str(poly_fit_tot4grow(currind)),"growrate":str(poly_fit_tot4growrate(currind))},"activeregr4":{"val":str(yregrac4[currind]),"grow":str(poly_fit_ac4grow(currind)),"growrate":str(poly_fit_ac4growrate(currind))},"date":str(daterange[len(x)+i])})
+    #print(data_predict)
+    json.dump(data_predict,open(direcdate+"/predict"+suffix+".txt","w"))
             
     
 if __name__=="__main__":

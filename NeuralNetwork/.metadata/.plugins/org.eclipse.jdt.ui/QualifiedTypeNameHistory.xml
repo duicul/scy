@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
+    <fullyQualifiedTypeName name="SigmoidPerceptron"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.util.Pair"/>
+    <fullyQualifiedTypeName name="jdk.internal.util.xml.impl.Pair"/>
+    <fullyQualifiedTypeName name="jdk.internal.vm.compiler.collections.Pair"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="NeuralNetwork"/>
+    <fullyQualifiedTypeName name="FullyConnectedLayer"/>
+    <fullyQualifiedTypeName name="DifferenceError"/>
+    <fullyQualifiedTypeName name="ActivationFunction"/>
+    <fullyQualifiedTypeName name="ErrorMeasure"/>
+    <fullyQualifiedTypeName name="SigmoidFunction"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
+</qualifiedTypeNameHistroy>

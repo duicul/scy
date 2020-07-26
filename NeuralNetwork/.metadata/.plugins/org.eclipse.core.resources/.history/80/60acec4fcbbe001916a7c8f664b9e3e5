@@ -1,0 +1,27 @@
+import java.util.Random;
+
+public class Input {
+	
+	private double weight;
+
+	public Input(){
+		this.weight=new Random().nextFloat();//0.5
+		}
+
+	public double forward(double inp){
+		return this.weight*inp;
+	}
+
+	public double adjust(double error) {
+		this.weight+=error;
+		return this.weight;
+	}
+	
+	public double getWeight() {
+		return this.weight
+	}
+	
+	public String toString() {
+		return "w= "+this.weight+" ";
+	}
+}

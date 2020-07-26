@@ -76,8 +76,14 @@ def generate_graphs_confirmed(countries):
         xgrow.append(xgrowa)
         ygrow.append(ygrowa)
     for i in range(len(xgrow)):
-        xgrow[i].pop()
-        ygrow[i].pop()
+        if len(x[i])>0:
+            x[i].pop()
+        if len(y[i])>0:
+            y[i].pop()
+        if len(xgrow[i])>0:
+            xgrow[i].pop()
+        if len(ygrow[i])>0:
+            ygrow[i].pop()
     return (x,y,xgrow,ygrow,countries)
 
 def generate_data(miu,sig,fact):

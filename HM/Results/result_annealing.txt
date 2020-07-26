@@ -1,0 +1,200 @@
+[
+	{
+		"nred": 100
+	},
+	{
+		"len": 8,
+		"init_temp": 3900,
+		"templen": 3850,
+		"coolfact": 0.01,
+		"size": 8,
+		"times": 0.0079983,
+		"time": 7998300,
+		"val": -10,
+		"length": 3,
+		"list": [
+			-41,
+			16,
+			15
+		]
+	},
+	{
+		"len": 8,
+		"init_temp": 2500,
+		"templen": 2390,
+		"coolfact": 0.001,
+		"size": 8,
+		"times": 0.0219415,
+		"time": 21941500,
+		"val": 64,
+		"length": 3,
+		"list": [
+			33,
+			15,
+			16
+		]
+	},
+	{
+		"len": 8,
+		"init_temp": 1400,
+		"templen": 1299,
+		"coolfact": 0.001,
+		"size": 8,
+		"times": 0.0169633,
+		"time": 16963300,
+		"val": 82,
+		"length": 2,
+		"list": [
+			16,
+			66
+		]
+	},
+	{
+		"len": 10,
+		"init_temp": 3900,
+		"templen": 3850,
+		"coolfact": 0.01,
+		"size": 10,
+		"times": 0.008967,
+		"time": 8967000,
+		"val": -73,
+		"length": 3,
+		"list": [
+			82,
+			-63,
+			-92
+		]
+	},
+	{
+		"len": 10,
+		"init_temp": 2500,
+		"templen": 2390,
+		"coolfact": 0.001,
+		"size": 10,
+		"times": 0.0169549,
+		"time": 16954900,
+		"val": -166,
+		"length": 2,
+		"list": [
+			-67,
+			-99
+		]
+	},
+	{
+		"len": 10,
+		"init_temp": 1400,
+		"templen": 1299,
+		"coolfact": 0.001,
+		"size": 10,
+		"times": 0.019946,
+		"time": 19946000,
+		"val": 38,
+		"length": 3,
+		"list": [
+			-52,
+			8,
+			82
+		]
+	},
+	{
+		"len": 50,
+		"init_temp": 3900,
+		"templen": 3850,
+		"coolfact": 0.01,
+		"size": 50,
+		"times": 0.1057169,
+		"time": 105716900,
+		"val": 2,
+		"length": 6,
+		"list": [
+			14,
+			-64,
+			-54,
+			38,
+			40,
+			28
+		]
+	},
+	{
+		"len": 50,
+		"init_temp": 2500,
+		"templen": 2390,
+		"coolfact": 0.001,
+		"size": 50,
+		"times": 0.3152486,
+		"time": 315248600,
+		"val": 95,
+		"length": 5,
+		"list": [
+			-78,
+			44,
+			56,
+			45,
+			28
+		]
+	},
+	{
+		"len": 50,
+		"init_temp": 1400,
+		"templen": 1299,
+		"coolfact": 0.001,
+		"size": 50,
+		"times": 0.31021,
+		"time": 310210000,
+		"val": -117,
+		"length": 2,
+		"list": [
+			-76,
+			-41
+		]
+	},
+	{
+		"len": 100,
+		"init_temp": 3900,
+		"templen": 3850,
+		"coolfact": 0.01,
+		"size": 100,
+		"times": 0.9108251,
+		"time": 910825100,
+		"val": 31,
+		"length": 3,
+		"list": [
+			62,
+			-62,
+			31
+		]
+	},
+	{
+		"len": 100,
+		"init_temp": 2500,
+		"templen": 2390,
+		"coolfact": 0.001,
+		"size": 100,
+		"times": 1.6155367,
+		"time": 1615536700,
+		"val": -19,
+		"length": 4,
+		"list": [
+			15,
+			-69,
+			-42,
+			77
+		]
+	},
+	{
+		"len": 100,
+		"init_temp": 1400,
+		"templen": 1299,
+		"coolfact": 0.001,
+		"size": 100,
+		"times": 1.7681512,
+		"time": 1768151200,
+		"val": -71,
+		"length": 3,
+		"list": [
+			-49,
+			47,
+			-69
+		]
+	}
+]

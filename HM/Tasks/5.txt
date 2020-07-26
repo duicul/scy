@@ -1,0 +1,8 @@
+Faster execution time for neighborhood search than backtracking
+TNS-10/TNS-8= 0.5‬ (strange)
+TB-8/TNS-8 = 5.2041504
+TB-10/TNS-10= 1,034.22176
+TNS-50=1062500000
+TNS-100=7843750000
+It’s feasible to use neighborhood search for larger datasets, the time for backtracking grows exponentially higher but the one for neighborhood search seems to grow at a slower rate.
+

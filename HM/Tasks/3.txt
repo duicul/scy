@@ -1,0 +1,6 @@
+[{'size': 8, 'time': 162629700, 'val': 0, 'length': 6, 'list': [66, -16, 16, -58, 33, -41]}, 
+{'size': 10, 'time': 16159715000, 'val': 0, 'length': 3, 'list': [44, 8, -52]}]
+
+Tb10/Tb8=99.36509137014949
+The time grows exponentially with the data size
+

@@ -1,0 +1,16 @@
+Considering best solutions for simmulated annealing and tabu search (8,10,50 and 100 elements):
+S[]SA-i=[-10,38,2,-19]
+S[]TS-i=[7,-4,-20,-1]
+S[]NS-i=[5,3,0,0]
+S[]B-i=[0,0]
+
+T[]SA=[7998300,19946000,105716900,1615536700]
+T[]TS=[0,0,508106700,89267200]
+T[]B=[162629700,16159715000]
+T[]NS-i=[31250000,15625000,1062500000,7843750000]
+
+For the results, the best solutions for 50 the elements time order is : NS, SA then TS and for 100 elements is: NS,TS then SA.
+For the execution time, the best solutions for 50 the elements time order is : SA, TS, NS  and for 100 elements is: TS,SA ,NS.
+
+For best results always neighborhood search delivers, but with a highest execution time.
+SA and TS give worse results then NS for 50 and 100 results, but with lower execution time.

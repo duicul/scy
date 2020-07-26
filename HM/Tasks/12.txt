@@ -1,0 +1,23 @@
+The initial temperature gives the running time of the algorithm and the alfa parameter gives the speed at which is decreases, 
+a higher initial temperature gives a higher change of escaping a local solution.
+
+"init_temp": 3900,"templen": 3850,"coolfact": 0.01
+IA8 "time": 7998300,"val": -10
+IA10 "time": 8967000,"val": -73
+IA50 "time": 105716900,"val": 2
+IA100 "time": 910825100,"val": 31
+
+"init_temp": 2500,"templen": 2390,"coolfact": 0.001
+IA8 "time": 21941500,"val": 64
+IA10 "time": 16954900,"val": -166
+IA50 "time": 315248600,"val": 95
+IA100 "time": 1615536700,"val": -19
+
+"init_temp": 1400,"templen": 1299,"coolfact": 0.001
+IA8 "time": 16963300,"val": 82
+IA10 "time": 19946000,"val": 3
+IA50 "time": 310210000,"val": -117
+IA100 "time": 1768151200,"val": -71
+
+A higher temperature length gives better solutions but a longer execution time.
+A smaller cooling factor also gives better solutions but a longer execution time.

@@ -1,0 +1,12 @@
+Considering best times for simmulated annealing and tabu search (8 and 10 elements):
+T[]SA=[7998300,8967000]
+T[]TS=[0,0]
+T[]B=[162629700,16159715000]
+
+Tabu search is the fastest, followed by simmulated annealing and backtracking.
+TSA10/TSA-8=1.12
+TTS-10/TTS-8=0
+TB-8/TSA-8=20.33
+TB-10/TSA-10=1,802.13
+TB-8/TTS-8=00
+TB-10/TTS-10=00

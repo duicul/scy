@@ -1,0 +1,8 @@
+Simulated annealing and tabu search are almost a must when solving a problem with a large solution space, the execution time is small, 
+but the solutions have a high degree of difference to the global optimum, but the algorithms could be run more times, 
+using neighborhood or backtracking being almost impossible from a practical standpoint. In some cases achieving the global optimum is not necessary.
+
+Neighborhood search could be used for medium size solution spaces where execution time still is not impractically large.
+
+Backtracking could be used for small solution spaces, always giving the global optimum.
+

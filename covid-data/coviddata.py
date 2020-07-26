@@ -400,7 +400,7 @@ def generate_graphs(countries,filename):
 
 
 if __name__ == "__main__":
-    countries=["romania","germany","italy","hungary","spain","portugal","austria","denmark"]#,"france"]#,"united-states"]
+    countries=["romania","germany","italy","hungary","spain","portugal","austria","denmark"]#,"france"]
     generate_graphs(countries,"grapheurope")
     generate_graphs(["china"],"graphchina")
     generate_graphs(["romania","serbia","hungary","bulgaria","ukraine","moldova"],"graphbalkan")

@@ -228,21 +228,35 @@ def test(datasize,threads_no):
     select=test_select(threads_no)
     return {"datasize":datasize,"threads":threads_no,"data/thread":datasize/threads_no,"select":select,"insert":insert}
 
-threads_no=[1,2,5,10,20,50,100]
-datasize=[10,20,30,50,100,200,300,500,1000,2000,3000,4000,5000,10000]
-tests=[]
-for th in threads_no:
-    for ds in datasize :
-        if ds>=th:
-            retry=0
-            succ=False
-            while retry<30 and not succ:
-                try:
-                    result=test(ds,th)
-                    tests.append(result)
-                    succ=True
-                except Exception:
-                    retry+=1
-file = open("result_mariadb.txt", "w")
-json.dump(tests,file)
-file.close()
+if __name__=="__main__":
+    t=[]
+    for i in range(100):
+        create_table()
+        t.append(test_insert(1,1)["resp"])
+    average=sum(t)/len(t)
+    res={}
+    res["average"]=average
+    res["jitter%"]=((max(t)-average)/average)*100
+    res["data"]=t
+    file = open("result_mariadbjitter.txt", "w")
+    json.dump(res,file)
+    file.write(str(res))
+    file.close()
+    """threads_no=[1,2,5,10,20,50,100]
+    datasize=[10,20,30,50,100,200,300,500,1000,2000,3000,4000,5000,10000]
+    tests=[]
+    for th in threads_no:
+        for ds in datasize :
+            if ds>=th:
+                retry=0
+                succ=False
+                while retry<30 and not succ:
+                    try:
+                        result=test(ds,th)
+                        tests.append(result)
+                        succ=True
+                    except Exception:
+                        retry+=1
+    file = open("result_mariadb.txt", "w")
+    json.dump(tests,file)
+    file.close()"""

@@ -166,7 +166,21 @@ def test(datasize,threads_no):
     return {"datasize":datasize,"threads":threads_no,"data/thread":datasize/threads_no,"select":select,"insert":insert}
 
 if __name__ == "__main__":
-    threads_no=[1]#,2,5,10,20,50,100]
+    t=[]
+    for i in range(100):
+        create_table()
+        t.append(test_insert(1,1)["resp"])
+    print(t)
+    average=sum(t)/len(t)
+    res={}
+    res["average"]=average
+    res["jitter%"]=((max(t)-average)/average)*100
+    res["data"]=t
+    file = open("result_sqlitejitter.txt", "w")
+    json.dump(res,file)
+    file.write(str(res))
+    file.close()
+    """threads_no=[1]#,2,5,10,20,50,100]
     datasize=[10,20,30,50,100,200,300,500,1000,2000,3000,4000,5000,10000]
     tests=[]
     for th in threads_no:
@@ -186,4 +200,4 @@ if __name__ == "__main__":
     file = open("result_sqlite.txt", "w")
     json.dump(tests,file)
     file.close()
-    #create_table()
+    #create_table()"""

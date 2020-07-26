@@ -1,0 +1,22 @@
+The bigger the tenure, the longer an element is passed and the execution time is longer, but the solution is also better (smaller error => absolute value of solution)
+IA8
+tenure 1 -> "time": 0.0,"val": -8
+tenure 2 -> "time": 0.0,"val": -24
+tenure 3 -> "time": 0.0,"val": 7
+
+IA10
+tenure 2 -> "time": 0.0,"val": -59
+tenure 3 -> "time": 0.0,"val": -17
+tenure 4 -> "time": 0.0,"val": -4
+
+IA50
+tenure 20 -> "time": 79296800,"val": 88
+tenure 30 -> "time": 8975800,"val": -22
+tenure 40 -> "time": 508106700,"val": -20
+
+IA100
+tenure 30 -> "time": 89267200,"val": -1
+tenure 40 -> "time": 19945700,"val": -52
+tenure 50 -> "time": 144695100,"val": 24
+
+A higher tenure seems to result in better solutions, but a higher execution time, but it also depends on the starting solution subset.
