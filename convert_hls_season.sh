@@ -5,7 +5,6 @@ exit
 fi
 #files=$(ls $path)
 #echo $files
-mkdir $path/converted480p
 files=$path/*
 files_no=1
 while [ $files_no -gt 0 ]
@@ -27,13 +26,17 @@ echo "File extension only: $file_extension"
 echo "First part of filename only: $file_main"
 if [ -f "$file" ]
 then 
+	mkdir "$path/$file_main"
+	mkdir "$path/$file_main/convertedhls"
+	mkdir "$path/$file_main/Subs"
 	echo $file
 	file_name=$(basename "$file")
 	echo "filename " $file_name
 	#-qscale 5
-	$(ffmpeg -i "$file_name"  -s 840x480 -c:v libx264 -crf 23 -q:a 100 "$path/converted480p/$file_main.mp4")
-	mkdir "$path/old"
-	mv  "$path/$file_name" "$path/old/$file_name"
+	mkdir "$path/$file_main/$file_main"
+	$(ffmpeg -i "$file_name" -c:v libx264 -crf 23 -preset veryfast     -c:a aac -b:a 128k -ac 2     -f hls -hls_time 20 -hls_playlist_type event "$path/$file_main/$file_main/$file_main.m3u8")
+	mkdir "$path/$file_main/old"
+	mv  "$path/$file_name" "$path/$file_main/old/$file_name"
 	files_no=$(($files_no+1))
 fi
 done

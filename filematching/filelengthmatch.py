@@ -75,17 +75,17 @@ def match_file(file1,aux_file,ind1,ind2,dur1,size1,measure_len,no_files):
             print(file1+" "+str(dur1))
             print(file2+" "+str(dur2))
             print(traceback.format_exc())
-            datalog.append({"error":traceback.format_exc()})
+            #datalog.append({"error":traceback.format_exc()})
             #data_log=data_log+("\n"+traceback.format_exc())
     return (total,data_log)
 
-def match(file1,aux_file,ind1,dur1,size1,measure_len):
+def match(file1,aux_file,ind1,dur1,size1,measure_len,max_threads):
     data_log=[]
     total=0
     no_files=len(aux_file)
     thread_list=[]
     active_threads=0
-    max_threads=20
+    #max_threads=20
     for ind2 in range(ind1+1,no_files):
         with concurrent.futures.ThreadPoolExecutor() as executor:
             t1 = executor.submit(match_file,file1,aux_file,ind1,ind2,dur1,size1,measure_len,no_files)
@@ -176,7 +176,7 @@ def parse_dir(paths,max_threads,outputfile,measure_len):
             aux_file[ind1].append(size1)
         else:
             size1=aux_file[ind1][3]
-        (total_count,return_value)=match(file1,aux_file,ind1,dur1,size1,measure_len)
+        (total_count,return_value)=match(file1,aux_file,ind1,dur1,size1,measure_len,max_threads)
         data_log+=return_value
         total+=total_count
         """with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -224,4 +224,4 @@ def compare_dirs(Dir1,Dir2):
                     print()
 if __name__ == "__main__":
     data_log=""
-    parse_dir(["D:\ding\Star","D:\ding\Site"],20,"log_file.txt",True)
+    parse_dir(["E:\ding\Star","E:\ding\Site"],100,"log_file.txt",True)

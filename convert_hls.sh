@@ -5,7 +5,7 @@ exit
 fi
 #files=$(ls $path)
 #echo $files
-mkdir $path/converted480p
+mkdir $path/convertedhls
 files=$path/*
 files_no=1
 while [ $files_no -gt 0 ]
@@ -31,7 +31,8 @@ then
 	file_name=$(basename "$file")
 	echo "filename " $file_name
 	#-qscale 5
-	$(ffmpeg -i "$file_name"  -s 840x480 -c:v libx264 -crf 23 -q:a 100 "$path/converted480p/$file_main.mp4")
+	mkdir "$path/$file_main"
+	$(ffmpeg -i "$file_name" -f hls -hls_time 20 "$path/$file_main/$file_main.m3u8")
 	mkdir "$path/old"
 	mv  "$path/$file_name" "$path/old/$file_name"
 	files_no=$(($files_no+1))
